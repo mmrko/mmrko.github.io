@@ -1,0 +1,35 @@
+.background {
+  position:absolute;
+  margin: -5px 0 0 -5px;
+  padding: 5px;
+  background: $white 50% no-repeat;
+  background-size: cover;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+}
+
+.background-transition {
+  transition: opacity 0.75s ease-in, filter 1s;
+}
+
+.background-hide {
+  opacity: 0;
+}
+
+.background-state-home {
+  background-image: url($background-image-home);
+  filter: #{"grayscale(60%) blur(2px)"};
+}
+
+.background-state-about {
+  background-image: url($background-image-about);
+  background-position-x: 5px;
+  filter: #{"grayscale(50%)"};
+}
+
+.background-state-work {
+  background-image: url($background-image-work);
+  filter: #{"grayscale(65%)"};
+}

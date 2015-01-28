@@ -1,0 +1,10 @@
+.banner {
+  width:100%;
+  position:absolute;
+  transform: translateY(52vh);
+  transition: transform 0.75s ease-in-out;
+
+  &.banner-down {
+    transform: translateY(70vh);
+  }
+}

@@ -1,0 +1,30 @@
+.social {
+  padding: 0.5em 0;
+
+  // background: linear-gradient(125deg, #FFE186, rgba(0, 0, 0, 0.55) 25%);
+
+  > * {
+    margin: 0 2.5%;
+  }
+
+}
+
+.link-item {
+
+  &.github:hover .icon {
+      color: #333;
+  }
+
+  &.linkedin:hover .icon {
+    color: #1B86BC;
+  }
+
+  &.flickr:hover .icon {
+    color: #FF3A89;
+  }
+
+  &:last-child {
+    margin-right:5%;
+  }
+
+}

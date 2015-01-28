@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="Marko, Raatikka, web, portfolio">
+
+        <meta property="og:title" content="Marko Raatikka">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://mmrko.me">
+        <meta property="og:site_name" content="mmrko.me">
+        <meta property="og:description" content="Marko's web portfolio">
+        <meta name="description" content="Marko's web portfolio">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>
+        mmrko.me {{#if page.title}} | {{page.title}} {{/if}}
+        </title>
+
+        {{css-tags}}
+
+        <!--[if lt IE 10 ]>
+        <script src="static/js/classList.min.js" type="text/javascript"></script>
+        <![endif]-->
+
+    </head>
+
+    <body class="no-js">
+
+        <script>document.body.classList.remove('no-js');</script>
+
+        {{{yield}}}
+
+        {{javascript-tags}}
+
+    </body>
+
+</html>

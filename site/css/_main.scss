@@ -1,0 +1,10 @@
+@import 'variables';
+@import 'common';
+
+@media only screen and (max-width: 767px) {
+  @import 'mobile/base';
+}
+
+@media only screen and (min-width: 768px) {
+	@import 'desktop/base';
+}

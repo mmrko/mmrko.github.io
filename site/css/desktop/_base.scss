@@ -1,0 +1,30 @@
+html {
+
+  overflow:hidden;
+
+}
+
+body {
+
+  &:after{
+    display:none;
+    content: url($background-image-home)  url($background-image-about) url($background-image-work);
+  }
+
+}
+
+.link-item {
+  user-select: none;
+  cursor:pointer;
+}
+
+.icon {
+  color: $white;
+}
+
+@import './partials/background';
+@import './partials/intro';
+@import './partials/banner';
+@import './partials/face';
+@import './partials/navbar';
+@import './partials/social';
