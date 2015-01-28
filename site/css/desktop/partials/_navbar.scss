@@ -6,29 +6,11 @@
   height: 100%;
 }
 
-.social {
-  width: 62.5%;
-  text-align: right;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(180deg, transparent 10%, rgba(50, 50, 50, 0.6) 20%);
-
-  &.right-handed {
-    transform: translateY(-125px);
-  }
-
-  .link-item-container {
-    margin-right: 15%;
-  }
-}
-
 .site-links {
 
   width: 37.5%;
   padding: 0.5em 0;
   text-align:center;
-  background: linear-gradient(45deg, transparent, rgba(50, 50, 50, 0.6) 30%);
 
   &.right-handed {
     transform: translateY(125px);
@@ -42,18 +24,72 @@
     text-decoration:underline;
   }
 
+}
 
+.navbar-item {
+  opacity:0;
+  background: rgba(0, 0, 0, 0.25);
+  animation: fade-in 1s 0.6s forwards;
+  transition: transform 0.8s, background-position 1s;
+  transform: translateY(0);
+  border-bottom: 1px solid;
+}
+
+$bg-color-about: rgb(190, 190, 190);
+$bg-color-work: rgb(17, 38, 60);
+$bg-color-home: rgb(147, 183, 173);
+
+.navbar-item-bg-left {
+  background: linear-gradient(-45deg, $bg-color-about, rgba($bg-color-about, 0.6) 5%, transparent 99%),
+              linear-gradient(-45deg, $bg-color-work, rgba($bg-color-work, 0.6) 15%, transparent 99%),
+              linear-gradient(-45deg, $bg-color-home, rgba($bg-color-home, 0.7) 5%, transparent 95%);
+}
+
+.navbar-item-bg-right {
+  background: linear-gradient(90deg, $bg-color-about, rgba($bg-color-about, 0.6) 5%, transparent 99%),
+              linear-gradient(90deg, $bg-color-work, rgba($bg-color-work, 0.6) 15%, transparent 99%),
+              linear-gradient(90deg, $bg-color-home, rgba($bg-color-home, 0.7) 5%, transparent 95%);
+}
+
+.navbar-item-bg {
+  background-size: 100%;
+  background-repeat-y: no-repeat;
+  background-position-x: 0;
+}
+
+.navbar-item-bg-state-about {
+  border-bottom-color: rgba(0, 0, 0, 0.45);
+  background-position-y: 0, 35px, -35px;
+}
+
+.navbar-item-bg-state-work {
+  border-bottom-color: #707579;
+  background-position-y: 35px, 0, -35px;
+}
+
+.navbar-item-bg-state-home {
+  border-bottom-color: #658B93;
+  background-position-y: -35px, 35px, 0;
 }
 
 .link-item {
-  margin: 0 5%;
-}
 
-.site-links, .social {
-  opacity:0;
-  border-bottom: 1px solid rgb(58, 58, 58);
-  background-color: rgba(0, 0, 0, 0.25);
-  animation: fade-in 1s 0.6s forwards;
-  transition: transform 0.75s;
-  transform: translateY(0);
+  margin: 0 5%;
+
+  &.github:hover .icon {
+      color: #000;
+  }
+
+  &.linkedin:hover .icon {
+    color: #1B86BC;
+  }
+
+  &.flickr:hover .icon {
+    color: #FF3A89;
+  }
+
+  &:last-child {
+    margin-right:5%;
+  }
+
 }

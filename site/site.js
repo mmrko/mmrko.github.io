@@ -5,10 +5,10 @@ var socialLinksElem = document.getElementById('js-social')
 var siteLinksElem = document.getElementById('js-site-links')
 var facePrimaryElem = document.getElementById('js-face-primary');
 var faceSecondaryElem = document.getElementById('js-face-secondary');
-var faceThumb = document.getElementById('js-face-thumb');
 var introElem = document.getElementById('js-intro');
+var navBarElems = document.getElementsByClassName('navbar-item');
+var pfx = ['webkit', 'moz', 'MS', 'o', ''];
 
-var pfx = ["webkit", "moz", "MS", "o", ""];
 var faceAnimations = (function () {
 
     var animations = {
@@ -28,21 +28,6 @@ var faceAnimations = (function () {
     return animations;
 })();
 
-var bannerToggler = (function ActionToggler (initialToggleState, okCb, falseCb) {
-
-    var toggleState = initialToggleState;
-
-    return {
-        toggle: function (toggle) {
-            if (toggle !== toggleState) {
-                console.log('Toggling!');
-                toggle ? okCb() : falseCb();
-                toggleState = toggle;
-            }
-        }
-    };
-
-})(true, bannerElem.classList.remove.bind(bannerElem.classList, 'banner-down'), bannerElem.classList.add.bind(bannerElem.classList, 'banner-down'));
 
 var intro = (function (element) {
 
@@ -51,13 +36,32 @@ var intro = (function (element) {
     return {
         remove: function () {
             if (!removed) {
-                element.style.opacity = 0;
+                element.classList.add('animation-intro-end');
                 removed = true;
             }
         }
     }
 
 })(introElem);
+
+var bannerDown = bannerElem.classList.add.bind(bannerElem.classList, 'banner-down');
+var bannerUp = bannerElem.classList.remove.bind(bannerElem.classList, 'banner-down')
+
+var bannerToggler = (function BannerToggler (initialState, downCb, upCb) {
+
+    var toggleState = initialState;
+
+    return {
+        toggle: function (toggle) {
+            if (toggle !== toggleState) {
+                console.log('Toggling!');
+                toggle === 'down' ? downCb() : upCb();
+                toggleState = toggle;
+            }
+        }
+    };
+
+})('up', bannerDown, bannerUp);
 
 function animationEvent(element, type, callback) {
     for (var p = 0; p < pfx.length; p++) {
@@ -76,12 +80,12 @@ function resetBgSecondary () {
 
 function changeBackground (nextState) {
     bgPrimaryElem.className = [ 'background', 'background-state-' + nextState ].join(' ');
-    bgSecondaryElem.addEventListener('transitionend', resetBgSecondary, false);
     bgSecondaryElem.classList.add('background-hide');
+    bgSecondaryElem.addEventListener('transitionend', resetBgSecondary, false);
 }
 
-function resetFaces (event) {
-    facePrimaryElem.classList.remove.apply(facePrimaryElem.classList, faceAnimations.values);
+function resetFaces (animation, event) {
+    facePrimaryElem.classList.remove(animation);
     faceSecondaryElem.className = facePrimaryElem.className.replace('face-primary', 'face-secondary');
 }
 
@@ -89,12 +93,22 @@ function changeFace (nextState, stateAnimation) {
 
     facePrimaryElem.className = facePrimaryElem.className.replace(/face\-state-\w+/i, [ 'face-state', nextState ].join('-'));
 
-    if (stateAnimation) {
-        facePrimaryElem.classList.add(stateAnimation);
-        faceSecondaryElem.classList.add(stateAnimation);
+    facePrimaryElem.classList.add(stateAnimation);
+    faceSecondaryElem.classList.add(stateAnimation);
+
+    animationEvent(faceSecondaryElem, 'AnimationEnd', resetFaces.bind(null, stateAnimation));
+}
+
+function changeNavbarItem (currentState, nextState) {
+
+    var i, length, navbarElem;
+
+    for (i = 0, length = navBarElems.length; i < length; i++) {
+        navbarElem = navBarElems[i];
+        navbarElem.classList.add([ 'navbar-item-bg-state', nextState ].join('-'));
+        navbarElem.classList.remove([ 'navbar-item-bg-state', currentState ].join('-'));
     }
 
-    animationEvent(faceSecondaryElem, 'AnimationEnd', resetFaces);
 }
 
 function animateNavbar (currentState, nextState) {
@@ -117,6 +131,8 @@ function animateNavbar (currentState, nextState) {
 
     changeFace(nextState, direction);
 
+    changeNavbarItem(currentState, nextState);
+
 }
 
 function changeState (currentState, nextState) {
@@ -131,16 +147,12 @@ function changeState (currentState, nextState) {
 
     animateNavbar(currentState, nextState);
 
-    switch (nextState) {
-
-        case 'home':
-            bannerToggler.toggle(true);
-            break;
-        default:
-            intro.remove();
-            bannerToggler.toggle(false);
-            break;
-
+    if (nextState !== 'home') {
+        intro.remove();
+        bannerToggler.toggle('down');
+    }
+    else {
+        bannerToggler.toggle('up');
     }
 
 }
@@ -158,9 +170,6 @@ function onHashChange (event) {
 
 if (window.location.hash && window.location.hash !== 'home') {
     changeState('home', window.location.hash.replace('#', ''));
-}
-else {
-    introElem.classList.add('animation-appear');
 }
 
 window.addEventListener('hashchange', onHashChange, false);

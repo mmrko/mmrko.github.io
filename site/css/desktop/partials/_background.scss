@@ -11,7 +11,7 @@
 }
 
 .background-transition {
-  transition: opacity 0.75s ease-in, filter 1s;
+  transition: opacity 0.75s ease-in;
 }
 
 .background-hide {
@@ -20,16 +20,13 @@
 
 .background-state-home {
   background-image: url($background-image-home);
-  filter: #{"grayscale(60%) blur(2px)"};
 }
 
 .background-state-about {
   background-image: url($background-image-about);
   background-position-x: 5px;
-  filter: #{"grayscale(50%)"};
 }
 
 .background-state-work {
   background-image: url($background-image-work);
-  filter: #{"grayscale(65%)"};
 }

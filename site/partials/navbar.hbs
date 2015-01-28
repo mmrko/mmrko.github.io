@@ -1,20 +1,23 @@
 <nav class="navbar">
 
-    <div id="js-site-links" class="site-links">
+    <div id="js-site-links" class="navbar-item navbar-item-bg navbar-item-bg-left navbar-item-bg-state-home site-links">
 
-    <div class="link-item-container">
-        <span class="link-item">
-            <i class="icon icon-user"></i>
-            <a href="#about">About me</a>
-        </span>
+        <div class="link-item-container">
+            <span class="link-item">
+                <i class="icon icon-user"></i>
+                <a href="#about">About me</a>
+            </span>
 
-        <span class="link-item">
-            <i class="icon icon-quill"></i>
-            <a href="#work">My Work</a>
-        </span>
+            <span class="link-item">
+                <i class="icon icon-quill"></i>
+                <a href="#work">My Work</a>
+            </span>
+        </div>
+
     </div>
 
+    <div id="js-social" class="navbar-item navbar-item-bg navbar-item-bg-right navbar-item-bg-state-home social-links">
+        {{>social}}
     </div>
 
-    {{>social}}
 </nav>

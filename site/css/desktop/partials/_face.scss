@@ -27,8 +27,9 @@
   height: 10em;
   margin-left: calc(37.5% - 5em);
   z-index: 1;
-  animation: fade-in 1s forwards, move-in 0.75s;
-  transform: translate3d(0, 0, 0);
+  animation: fade-in 1s forwards, move-in-from-above 0.75s ease-out;
+  background-color: white;
+  border-radius: 100%;
 }
 
 .face {
@@ -52,7 +53,7 @@
   }
 
   &.animation-face-fade {
-    animation: fade-in 1s forwards reverse ease;
+    animation: fade-in 0.75s forwards reverse;
   }
 
 }
@@ -74,7 +75,7 @@
 }
 
 .face-state-work {
-  background-position-x: 31%;
+  background-position-x: 31.75%;
 }
 
 .face-state-about {
