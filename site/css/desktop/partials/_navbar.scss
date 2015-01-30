@@ -21,7 +21,10 @@
   }
 
   .link-item a:hover {
-    text-decoration:underline;
+
+    .icon-user { color: black; }
+    .icon-work { color: #E6B93C; }
+
   }
 
 }
@@ -30,17 +33,17 @@
   opacity:0;
   background: rgba(0, 0, 0, 0.25);
   animation: fade-in 1s 0.6s forwards;
-  transition: transform 0.8s, background-position 1s;
+  transition: transform 0.8s, background-position 0.5s;
   transform: translateY(0);
   border-bottom: 1px solid;
 }
 
 $bg-color-about: rgb(190, 190, 190);
 $bg-color-work: rgb(17, 38, 60);
-$bg-color-home: rgb(147, 183, 173);
+$bg-color-home: rgb(87, 114, 135);
 
 .navbar-item-bg-left {
-  background: linear-gradient(-45deg, $bg-color-about, rgba($bg-color-about, 0.6) 5%, transparent 99%),
+  background: linear-gradient(-45deg, $bg-color-about, rgba(darken($bg-color-about, 10%), 0.7) 5%, transparent 99%),
               linear-gradient(-45deg, $bg-color-work, rgba($bg-color-work, 0.6) 15%, transparent 99%),
               linear-gradient(-45deg, $bg-color-home, rgba($bg-color-home, 0.7) 5%, transparent 95%);
 }
@@ -63,33 +66,11 @@ $bg-color-home: rgb(147, 183, 173);
 }
 
 .navbar-item-bg-state-work {
-  border-bottom-color: #707579;
+  border-bottom-color: #0B1822;
   background-position-y: 35px, 0, -35px;
 }
 
 .navbar-item-bg-state-home {
-  border-bottom-color: #658B93;
+  border-bottom-color: #3F575C;
   background-position-y: -35px, 35px, 0;
-}
-
-.link-item {
-
-  margin: 0 5%;
-
-  &.github:hover .icon {
-      color: #000;
-  }
-
-  &.linkedin:hover .icon {
-    color: #1B86BC;
-  }
-
-  &.flickr:hover .icon {
-    color: #FF3A89;
-  }
-
-  &:last-child {
-    margin-right:5%;
-  }
-
 }

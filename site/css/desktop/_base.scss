@@ -14,12 +14,58 @@ body {
 }
 
 .link-item {
+
+  margin: 0 5%;
   user-select: none;
   cursor:pointer;
+
+  a {
+    text-shadow: 1px 1px rgba(100, 100, 100, 0.75);
+  }
+
+  &.github:hover .icon {
+    color: #000;
+  }
+
+  &.flickr:hover .icon {
+    color: #FF3A89;
+  }
+
+  &.gmail:hover .icon {
+    color: #FF3D2C;
+  }
+
+  &.linkedin:hover .icon, &.twitter:hover .icon, {
+    color: #1B86BC;
+  }
+
 }
 
 .icon {
+  transition: color 0.125s ease-out;
   color: $white;
+}
+
+.text-background {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.footer {
+  position:absolute;
+  bottom:0;
+  font-size:0.75em;
+}
+
+.contact .link-item {
+  margin: 0 1%;
+}
+
+.background-comment {
+  text-shadow: 1px solid black;
+  font-size:$tiny;
+  position:absolute;
+  right:0;
+  bottom:0;
 }
 
 @import './partials/background';
@@ -28,3 +74,4 @@ body {
 @import './partials/face';
 @import './partials/navbar';
 @import './partials/social';
+@import './partials/views/view';

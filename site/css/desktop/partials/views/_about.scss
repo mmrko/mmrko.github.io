@@ -1,0 +1,30 @@
+.paragraphs {
+  max-width: 39em;
+  padding: 1.5em 0;
+  position: absolute;
+  margin-left: -0.5em;
+
+  @media only screen and (max-width: 1280px) {
+    max-width: 35em;
+  }
+}
+
+.paragraph {
+
+  margin: 0 0 5%;
+  padding: 2.5%;
+  border-left: 5px solid $white;
+
+  &.paragraph-middle {
+    width:85%;
+  }
+
+  &.paragraph-small {
+    width:75%;
+  }
+
+  .paragraph-link {
+    color: $gray;
+  }
+
+}

@@ -1,7 +1,18 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 $white: #eee;
+$gray: #999;
+
+$tiny: 0.7em;
+$small: 0.8em;
+
 $background-image-home: "static/images/laptop.jpg";
 $background-image-about: "static/images/cincinnati.jpg";
 $background-image-work: "static/images/ammersee.jpg";
 $face-picture: "static/images/faces.png";
-// $face-picture-about: "static/images/me.jpg";
-// $face-picture-work: "static/images/me2.jpg";

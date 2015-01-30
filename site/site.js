@@ -6,38 +6,32 @@ var siteLinksElem = document.getElementById('js-site-links')
 var facePrimaryElem = document.getElementById('js-face-primary');
 var faceSecondaryElem = document.getElementById('js-face-secondary');
 var introElem = document.getElementById('js-intro');
+var navBarWork = document.getElementById('js-navigation-work');
+var navBarWorkItemElems = document.getElementsByClassName('navigation-work-item');
 var navBarElems = document.getElementsByClassName('navbar-item');
 var pfx = ['webkit', 'moz', 'MS', 'o', ''];
 
-var faceAnimations = (function () {
-
-    var animations = {
-        CLOCKWISE: 'animation-face-clockwise',
-        COUNTERCLOCKWISE: 'animation-face-counter-clockwise',
-        FADE: 'animation-face-fade'
-    };
-
-    var values = [];
-
-    Object.keys(animations).forEach(function (animation) {
-        values.push(animations[animation]);
-    });
-
-    animations.values = values;
-
-    return animations;
-})();
-
+var faceAnimations = {
+    CLOCKWISE: 'animation-face-clockwise',
+    COUNTERCLOCKWISE: 'animation-face-counter-clockwise',
+    FADE: 'animation-face-fade'
+};
 
 var intro = (function (element) {
 
     var removed = false;
 
+    var removeFromDom = function () {
+        element.parentNode.removeChild(element);
+        animationEvent(element, 'AnimationEnd', removeFromDom, true);
+    };
+
     return {
         remove: function () {
             if (!removed) {
-                element.classList.add('animation-intro-end');
                 removed = true;
+                element.classList.add('animation-intro-end');
+                animationEvent(element, 'AnimationEnd', removeFromDom);
             }
         }
     }
@@ -63,10 +57,10 @@ var bannerToggler = (function BannerToggler (initialState, downCb, upCb) {
 
 })('up', bannerDown, bannerUp);
 
-function animationEvent(element, type, callback) {
+function animationEvent(element, type, callback, remove) {
     for (var p = 0; p < pfx.length; p++) {
         if (!pfx[p]) type = type.toLowerCase();
-        element.addEventListener(pfx[p]+type, callback, false);
+        remove ? element.removeEventListener(pfx[p]+type, callback) : element.addEventListener(pfx[p]+type, callback, false);
     }
 }
 
@@ -79,6 +73,7 @@ function resetBgSecondary () {
 }
 
 function changeBackground (nextState) {
+    // TODO: Triggers a document wide layout, hrr. Should use classList API here instead.
     bgPrimaryElem.className = [ 'background', 'background-state-' + nextState ].join(' ');
     bgSecondaryElem.classList.add('background-hide');
     bgSecondaryElem.addEventListener('transitionend', resetBgSecondary, false);
@@ -137,7 +132,7 @@ function animateNavbar (currentState, nextState) {
 
 function changeState (currentState, nextState) {
 
-    if (currentState === nextState) {
+    if (!nextState || currentState === nextState) {
         return false;
     }
 
@@ -157,13 +152,43 @@ function changeState (currentState, nextState) {
 
 }
 
+function changeWorkView (event) {
+    var navBarWorkTabElement = event.target;
+    var nextWorkView = navBarWorkTabElement.getAttribute('data-work-view');
+    var navBarWorkTabElements, i, length;
+
+    if (navBarWorkTabElement.classList.contains('selected')) {
+        return false;
+    }
+
+    navBarWorkTabElements = navBarWorkTabElement.parentNode.children;
+
+    for (i = 0, length = navBarWorkTabElements.length; i < length; i++) {
+        navBarWorkTabElements[i].classList.remove('selected')
+    }
+
+    navBarWorkTabElement.classList.add('selected');
+
+    for (i = 0, length = navBarWorkItemElems.length; i < length; i++) {
+        navBarWorkItemElems[i].classList.remove('active')
+    }
+
+    for (i = 0, length = navBarWorkItemElems.length; i < length; i++) {
+        if (nextWorkView === navBarWorkItemElems[i].getAttribute('data-work-view')) {
+            navBarWorkItemElems[i].classList.add('active');
+            break;
+        }
+    }
+
+}
+
 function onHashChange (event) {
     var stateRegExp = /\/#(.+)/;
     var currentState = stateRegExp.exec(event.oldURL);
     var nextState = stateRegExp.exec(event.newURL);
 
-    currentState = currentState ? currentState[1] : 'home';
-    nextState = nextState ? nextState[1] : 'home';
+    currentState = currentState ? currentState[1] : '';
+    nextState = nextState ? nextState[1] : '';
 
     changeState(currentState, nextState);
 }
@@ -173,3 +198,5 @@ if (window.location.hash && window.location.hash !== 'home') {
 }
 
 window.addEventListener('hashchange', onHashChange, false);
+
+navBarWork.addEventListener('click', changeWorkView, false);

@@ -11,6 +11,12 @@
   }
 }
 
+@keyframes roll-out {
+  100% {
+    transform: translate3d(-7em, -3em, 0) rotate(-70deg)
+  }
+}
+
 .intro {
   position:absolute;
   width:100%;
@@ -30,5 +36,6 @@
 }
 
 .animation-intro-end {
-  animation: fade-in 0.5s reverse forwards, move-in-from-above 0.5s reverse;
+  transform-origin: top left;
+  animation: fade-in 0.4s reverse forwards, roll-out 0.5s ease-in;
 }

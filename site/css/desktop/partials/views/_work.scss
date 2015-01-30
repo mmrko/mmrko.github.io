@@ -1,0 +1,114 @@
+@keyframes box-shadow-out {
+  0% {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3) inset;
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+.view-subview-work-container {
+  position:absolute;
+  top:0;
+  right:1em;
+  margin: -0.5em 0 0;
+  width: 50vw;
+  background: rgba(0, 0, 0, 0.80);
+}
+
+.navigation-work {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.navigation-work-link {
+  padding: 1em;
+  width: calc((100% - 6 * 1em) / 3);
+  display:inline-block;
+  margin-left:-5px;
+  border-top: 5px solid darken($gray, 30%);
+  transition: border 0.25s;
+  user-select: none;
+  cursor: pointer;
+  position:relative;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:hover {
+    border-top-color: $white;
+  }
+
+  &.selected {
+    border-top-color: $white;
+    animation: box-shadow-out 0.2s ease-out;
+    &:after, &:before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      bottom: 0;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.28) inset;
+      z-index: -1;
+    }
+  }
+
+}
+
+.navigation-work-link.navigation-work-link-web.selected {
+  &:after { width: 200%; right: -200%; }
+  &:before { display:none; }
+}
+
+.navigation-work-link.navigation-work-link-video.selected {
+  &:after { width: 100%; right: -100%; }
+  &:before { width: 100%; left: -100%; }
+}
+
+.navigation-work-link.navigation-work-link-other.selected {
+  &:after { width: 200%; left: -200%; }
+  &:before { display:none; }
+}
+
+@keyframes display-work-item {
+  0% { display:none ; opacity: 0; }
+  1% { display: block ; opacity: 0; }
+  100% { display: block ; opacity: 1; }
+}
+
+.navigation-work-item {
+  padding: 1em 1.25em;
+  display:none;
+  opacity:0;
+
+  &.active {
+    display:block;
+    opacity: 1;
+    animation: display-work-item 0.5s;
+  }
+
+  .no-js & {
+    display:block;
+    opacity: 1;
+  }
+}
+
+.navigation-work-item-list {
+  margin: 0;
+  padding: 0.5em 0 0.5em 1.5em;
+  list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAJUlEQVR42mNgAILy8vL/DLgASBKnApgkVgXIkhgKiNKJ005s4gDLbCZBiSxfygAAAABJRU5ErkJggg==");
+
+  &.selected {
+    list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVR42mNgwAfKy8v/48I4FeA0AacVDFQBAP9wJkE/KhUMAAAAAElFTkSuQmCC");
+  }
+}
+
+.navigation-work-item-list-item {
+
+  &:hover {
+    cursor:pointer;
+    user-select:none;
+    color: $gray;
+  }
+}

@@ -1,13 +1,12 @@
 .background {
   position:absolute;
-  margin: -5px 0 0 -5px;
-  padding: 5px;
   background: $white 50% no-repeat;
   background-size: cover;
+  background-position-x: 0px;
   z-index: -1;
+  opacity: 1;
   height: 100%;
   width: 100%;
-  opacity: 1;
 }
 
 .background-transition {
@@ -24,7 +23,6 @@
 
 .background-state-about {
   background-image: url($background-image-about);
-  background-position-x: 5px;
 }
 
 .background-state-work {
