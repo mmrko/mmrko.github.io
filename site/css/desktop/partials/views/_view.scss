@@ -1,3 +1,12 @@
+@keyframes fold-out {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
 .view {
   position:absolute;
   top:0; left:0;
@@ -14,7 +23,7 @@
 .view-subview {
   left:-9999px;
   opacity:0;
-  transition: opacity 0.75s ease;
+  transition: opacity 0.5s ease;
 
   &:target {
     left:0px;

@@ -1,3 +1,5 @@
+var workViewHandler = require('./workViewHandler');
+
 var bgPrimaryElem = document.getElementById('js-background-primary');
 var bgSecondaryElem = document.getElementById('js-background-secondary');
 var bannerElem = document.getElementById('js-banner');
@@ -6,8 +8,6 @@ var siteLinksElem = document.getElementById('js-site-links')
 var facePrimaryElem = document.getElementById('js-face-primary');
 var faceSecondaryElem = document.getElementById('js-face-secondary');
 var introElem = document.getElementById('js-intro');
-var navBarWork = document.getElementById('js-navigation-work');
-var navBarWorkItemElems = document.getElementsByClassName('navigation-work-item');
 var navBarElems = document.getElementsByClassName('navbar-item');
 var pfx = ['webkit', 'moz', 'MS', 'o', ''];
 
@@ -152,36 +152,6 @@ function changeState (currentState, nextState) {
 
 }
 
-function changeWorkView (event) {
-    var navBarWorkTabElement = event.target;
-    var nextWorkView = navBarWorkTabElement.getAttribute('data-work-view');
-    var navBarWorkTabElements, i, length;
-
-    if (navBarWorkTabElement.classList.contains('selected')) {
-        return false;
-    }
-
-    navBarWorkTabElements = navBarWorkTabElement.parentNode.children;
-
-    for (i = 0, length = navBarWorkTabElements.length; i < length; i++) {
-        navBarWorkTabElements[i].classList.remove('selected')
-    }
-
-    navBarWorkTabElement.classList.add('selected');
-
-    for (i = 0, length = navBarWorkItemElems.length; i < length; i++) {
-        navBarWorkItemElems[i].classList.remove('active')
-    }
-
-    for (i = 0, length = navBarWorkItemElems.length; i < length; i++) {
-        if (nextWorkView === navBarWorkItemElems[i].getAttribute('data-work-view')) {
-            navBarWorkItemElems[i].classList.add('active');
-            break;
-        }
-    }
-
-}
-
 function onHashChange (event) {
     var stateRegExp = /\/#(.+)/;
     var currentState = stateRegExp.exec(event.oldURL);
@@ -197,6 +167,6 @@ if (window.location.hash && window.location.hash !== 'home') {
     changeState('home', window.location.hash.replace('#', ''));
 }
 
-window.addEventListener('hashchange', onHashChange, false);
+workViewHandler.init();
 
-navBarWork.addEventListener('click', changeWorkView, false);
+window.addEventListener('hashchange', onHashChange, false);

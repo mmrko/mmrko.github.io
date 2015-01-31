@@ -1,13 +1,19 @@
-@mixin clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
 }
 
 $white: #eee;
 $gray: #999;
+$cyan: #0D8686;
+$yellow: #FFB733;
+$red: #CD4242;
 
 $tiny: 0.7em;
 $small: 0.8em;

@@ -13,14 +13,16 @@
 
   margin: 0 0 5%;
   padding: 2.5%;
-  border-left: 5px solid $white;
+  border-left: 5px solid $cyan;
 
   &.paragraph-middle {
     width:85%;
+    border-left-color: $yellow;
   }
 
-  &.paragraph-small {
+  &.paragraph-bottom {
     width:75%;
+    border-left-color: $red;
   }
 
   .paragraph-link {
