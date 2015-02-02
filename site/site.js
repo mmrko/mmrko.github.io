@@ -1,5 +1,6 @@
-var workViewHandler = require('./lib/workViewHandler');
+require('./lib/workViewHandler').init();
 var animation = require('./lib/CSSAnimations');
+
 var bgPrimaryElem = document.getElementById('js-background-primary');
 var bgSecondaryElem = document.getElementById('js-background-secondary');
 var bannerElem = document.getElementById('js-banner');
@@ -9,6 +10,9 @@ var facePrimaryElem = document.getElementById('js-face-primary');
 var faceSecondaryElem = document.getElementById('js-face-secondary');
 var introElem = document.getElementById('js-intro');
 var navBarElems = document.getElementsByClassName('navbar-item');
+
+var bannerDown = bannerElem.classList.add.bind(bannerElem.classList, 'banner-down');
+var bannerUp = bannerElem.classList.remove.bind(bannerElem.classList, 'banner-down')
 
 var faceAnimations = {
     CLOCKWISE: 'animation-face-clockwise',
@@ -47,9 +51,6 @@ var intro = (function (element) {
 
 })(introElem);
 
-var bannerDown = bannerElem.classList.add.bind(bannerElem.classList, 'banner-down');
-var bannerUp = bannerElem.classList.remove.bind(bannerElem.classList, 'banner-down')
-
 var bannerToggler = (function BannerToggler (initialState, downCb, upCb) {
 
     var toggleState = initialState;
@@ -65,6 +66,75 @@ var bannerToggler = (function BannerToggler (initialState, downCb, upCb) {
     };
 
 })('up', bannerDown, bannerUp);
+
+var stateManager = (function (window) {
+
+    var prevState = 'home',
+        currentState = window.location.hash.replace('#', ''),
+        urlHashRegex = /\/#(.+)/,
+        changedOnInit = false;
+
+    currentState = currentState || 'home';
+
+    if (prevState !== currentState) {
+        changedOnInit = true;
+    }
+
+    function isValidState (state) {
+        return [ 'home', 'about', 'work' ].indexOf(state) !== -1;
+    }
+
+    function handleStateChange (callback, event) {
+
+        console.log(arguments)
+
+        if (event && event.newUrl) {
+            currentState = urlHashRegex.exec(event.newURL);
+            currentState = currentState ? currentState[1] : 'home';
+        }
+        else {
+            currentState = window.location.hash.replace('#', '');
+            currentState = currentState || 'home';
+        }
+
+        if (currentState === prevState) {
+            console.log(prevState, currentState)
+            return console.info('State not changed.');
+        }
+
+        if (!isValidState(currentState)) {
+            return console.error('Invalid state: ', currentState);
+        }
+
+        callback.apply(event, [ prevState, currentState ]);
+
+    }
+
+    return {
+        onStateChange: function (func) {
+
+            if (!func || typeof func !== 'function') {
+                return console.error('Callback argment is not a function.');
+            }
+
+            var hashChanged = function (prev, next) {
+                console.info('Changing state:', prev, '->', next);
+                func.apply(this, [ prev, next ]);
+                prevState = next;
+            };
+
+            var handlerFunc = handleStateChange.bind(null, hashChanged);
+
+            if (changedOnInit) {
+                setTimeout(handlerFunc, 0);
+                changedOnInit = false;
+            }
+
+            return window.addEventListener('hashchange', handlerFunc, false);
+        }
+    };
+
+})(window);
 
 function transitionEndEventName () {
     var i,
@@ -106,37 +176,37 @@ function resetFaces () {
     faceSecondaryElem.className = facePrimaryElem.className.replace('face-primary', 'face-secondary');
 }
 
-function changeBackground (currentState, nextState) {
-    bgPrimaryElem.classList.remove('background-state-' + currentState);
-    bgPrimaryElem.classList.add('background-state-' + nextState);
+function changeBackground (prevState, currentState) {
+    bgPrimaryElem.classList.remove('background-state-' + prevState);
+    bgPrimaryElem.classList.add('background-state-' + currentState);
     bgSecondaryElem.classList.add('background-hide');
 }
 
-function changeFace (currentState, nextState, faceAnimation) {
-    facePrimaryElem.classList.remove('face-state-' + currentState);
-    facePrimaryElem.classList.add('face-state-' + nextState);
+function changeFace (prevState, currentState, faceAnimation) {
+    facePrimaryElem.classList.remove('face-state-' + prevState);
+    facePrimaryElem.classList.add('face-state-' + currentState);
     facePrimaryElem.classList.add(faceAnimation);
     faceSecondaryElem.classList.add(faceAnimation);
 
 }
 
-function changeNavbarItem (currentState, nextState) {
+function changeNavbarItem (prevState, currentState) {
 
     var i, length, navbarElem;
 
     for (i = 0, length = navBarElems.length; i < length; i++) {
         navbarElem = navBarElems[i];
-        navbarElem.classList.add([ 'navbar-item-bg-state', nextState ].join('-'));
-        navbarElem.classList.remove([ 'navbar-item-bg-state', currentState ].join('-'));
+        navbarElem.classList.add([ 'navbar-item-bg-state', currentState ].join('-'));
+        navbarElem.classList.remove([ 'navbar-item-bg-state', prevState ].join('-'));
     }
 
 }
 
-function animateNavbar (currentState, nextState) {
+function animateNavbar (prevState, currentState) {
 
     var faceAnimation = faceAnimations.FADE;
 
-    if (nextState === 'about') {
+    if (currentState === 'about') {
         socialLinksElem.classList.add('right-handed');
         siteLinksElem.classList.add('right-handed');
         faceAnimation = faceAnimations.COUNTERCLOCKWISE
@@ -146,29 +216,23 @@ function animateNavbar (currentState, nextState) {
         siteLinksElem.classList.remove('right-handed');
     }
 
-    if (currentState === 'about') {
+    if (prevState === 'about') {
         faceAnimation = faceAnimations.CLOCKWISE;
     }
 
-    changeFace(currentState, nextState, faceAnimation);
+    changeFace(prevState, currentState, faceAnimation);
 
-    changeNavbarItem(currentState, nextState);
+    changeNavbarItem(prevState, currentState);
 
 }
 
-function changeState (currentState, nextState) {
+function changeState (prevState, currentState) {
 
-    if (!nextState || currentState === nextState) {
-        return false;
-    }
+    changeBackground(prevState, currentState);
 
-    console.log('States:', currentState, '->', nextState)
+    animateNavbar(prevState, currentState);
 
-    changeBackground(currentState, nextState);
-
-    animateNavbar(currentState, nextState);
-
-    if (nextState !== 'home') {
+    if (currentState !== 'home') {
         intro.remove();
         bannerToggler.toggle('down');
     }
@@ -178,45 +242,6 @@ function changeState (currentState, nextState) {
 
 }
 
-function onHashChange (event) {
-
-    var stateRegExp = /\/#(.+)/;
-    var currentState = stateRegExp.exec(event.oldURL);
-    var nextState = stateRegExp.exec(event.newURL);
-
-    currentState = currentState ? currentState[1] : 'home';
-    nextState = nextState ? nextState[1] : 'home';
-    changeState(currentState, nextState);
-}
-
-if (!Function.prototype.bind) {
-  Function.prototype.bind = function (oThis) {
-    if (typeof this !== "function") {
-      // closest thing possible to the ECMAScript 5 internal IsCallable function
-      throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
-    }
-
-    var aArgs = Array.prototype.slice.call(arguments, 1),
-        fToBind = this,
-        fNOP = function () {},
-        fBound = function () {
-          return fToBind.apply(this instanceof fNOP && oThis
-                                 ? this
-                                 : oThis,
-                               aArgs.concat(Array.prototype.slice.call(arguments)));
-        };
-
-    fNOP.prototype = this.prototype;
-    fBound.prototype = new fNOP();
-
-    return fBound;
-  };
-}
-
-workViewHandler.init();
-
-bgSecondaryElem.addEventListener(transitionEndEventName(), resetBgSecondary, false);
-
 if (animation.supported) {
     faceSecondaryElem.addEventListener(animation.end, resetFaces, false);
 }
@@ -224,24 +249,6 @@ else {
     console.warn('CSS Animations not supported!');
 }
 
-if (window.location.hash && window.location.hash !== 'home') {
-    setTimeout(function () {
-        changeState('home', window.location.hash.replace('#', ''));
-    }, 0);
-}
+bgSecondaryElem.addEventListener(transitionEndEventName(), resetBgSecondary, false);
 
-if (!('onhashchange' in window) || window.attachEvent) {
-    prev = window.location.href;
-    setInterval(function() {
-        next = window.location.href;
-        if (prev === next) return;
-        onHashChange.call(window, {
-            type: 'hashchange',
-            newURL: next,
-            oldURL: prev
-        });
-        prev = next;
-    }, 100);
-} else if (window.addEventListener) {
-    window.addEventListener('hashchange', onHashChange, false);
-}
+stateManager.onStateChange(changeState);

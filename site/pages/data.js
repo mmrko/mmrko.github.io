@@ -101,8 +101,8 @@ data.work = {
     other: [
         {
             title: 'Volunteering as a best buddy for mentally challenged',
-            description: 'In fall 2013 I began volunteering as a best buddy for a mentally challenged young man. We try seeing each other at least once a month and so far we\'ve ' +
-            'stuck with that plan pretty well. Although this type of volunteering takes up somewhat of an mental effort I feel that in the end it gives more than it takes.',
+            description: 'In fall 2013 I began volunteering as a best buddy for a mentally challenged young man. We see each other once or twice a month ' +
+            'to hang out, cook food and watch a movie. The best thing about volunteer work is knowning that you\'re making an effort to have a positive impact on someone\'s life.',
             keywords: [ 'Make the world a better place' ]
         },
         {

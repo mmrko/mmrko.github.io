@@ -2,7 +2,7 @@ module.exports = function (url, classes) {
 
     var formatUrl = function (url, title) {
         title = title ? ' title="' + title + '"' : '';
-        return '<a class="' + classes + '"' + ' href="' + url + '"' + title + '></a>';
+        return '<a class="' + classes + '"' + ' href="' + url + '"' + title + ' target="_blank"></a>';
     }
 
     if (typeof url.href === 'string') {
