@@ -26,7 +26,10 @@
   transition: transform 0.5s ease 0.25s;
   transform: scaleY(0);
   transform-origin: top left;
-  overflow: scroll;
+
+  @media only screen and (min-width: 90em) {
+    overflow: scroll;
+  }
 
   .view-subview:target & {
     transform: scaleY(1);
