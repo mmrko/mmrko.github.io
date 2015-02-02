@@ -69,7 +69,7 @@ function changeWorkSubView (name, event) {
 
 WorkViewHandler.prototype.getViewName = function ($view) {
     return $view.getAttribute('data-work-view-name');
-}
+};
 
 WorkViewHandler.prototype.init = function ($container) {
 
@@ -126,16 +126,12 @@ WorkViewHandler.prototype.init = function ($container) {
 
 WorkViewHandler.prototype.setSubView = function (view) {
 
-}
+};
 
 WorkViewHandler.prototype.setSelectedTab = function ($tab) {
     $tab.classList.add('selected');
     this.$selectedTab.classList.remove('selected');
     this.$selectedTab = $tab;
-}
-
-WorkViewHandler.prototype.setView = function (view) {
-
-}
+};
 
 module.exports = new WorkViewHandler();

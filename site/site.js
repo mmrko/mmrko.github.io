@@ -4,15 +4,15 @@ var animation = require('./lib/CSSAnimations');
 var bgPrimaryElem = document.getElementById('js-background-primary');
 var bgSecondaryElem = document.getElementById('js-background-secondary');
 var bannerElem = document.getElementById('js-banner');
-var socialLinksElem = document.getElementById('js-social')
-var siteLinksElem = document.getElementById('js-site-links')
+var socialLinksElem = document.getElementById('js-social');
+var siteLinksElem = document.getElementById('js-site-links');
 var facePrimaryElem = document.getElementById('js-face-primary');
 var faceSecondaryElem = document.getElementById('js-face-secondary');
 var introElem = document.getElementById('js-intro');
 var navBarElems = document.getElementsByClassName('navbar-item');
 
 var bannerDown = bannerElem.classList.add.bind(bannerElem.classList, 'banner-down');
-var bannerUp = bannerElem.classList.remove.bind(bannerElem.classList, 'banner-down')
+var bannerUp = bannerElem.classList.remove.bind(bannerElem.classList, 'banner-down');
 
 var faceAnimations = {
     CLOCKWISE: 'animation-face-clockwise',
@@ -37,7 +37,7 @@ var intro = (function (element) {
 
     if (sessionStorage.getItem('introPlayed')) {
         element.parentNode.removeChild(element);
-        remove = true;
+        removed = true;
     }
 
     return {
@@ -47,7 +47,7 @@ var intro = (function (element) {
                 element.addEventListener(animation.end, removeFromDom, false);
             }
         }
-    }
+    };
 
 })(introElem);
 
@@ -58,9 +58,18 @@ var bannerToggler = (function BannerToggler (initialState, downCb, upCb) {
     return {
         toggle: function (toggle) {
             if (toggle !== toggleState) {
+
                 console.log('Toggling!');
-                toggle === 'down' ? downCb() : upCb();
+
                 toggleState = toggle;
+
+                if (toggle === 'down') {
+                    downCb();
+                }
+                else {
+                    upCb();
+                }
+
             }
         }
     };
@@ -86,8 +95,6 @@ var stateManager = (function (window) {
 
     function handleStateChange (callback, event) {
 
-        console.log(arguments)
-
         if (event && event.newUrl) {
             currentState = urlHashRegex.exec(event.newURL);
             currentState = currentState ? currentState[1] : 'home';
@@ -98,7 +105,6 @@ var stateManager = (function (window) {
         }
 
         if (currentState === prevState) {
-            console.log(prevState, currentState)
             return console.info('State not changed.');
         }
 
@@ -138,7 +144,6 @@ var stateManager = (function (window) {
 
 function transitionEndEventName () {
     var i,
-        undefined,
         el = document.createElement('div'),
         transitions = {
             'transition':'transitionend',
@@ -169,7 +174,7 @@ function resetBgSecondary () {
 }
 
 function resetFaces () {
-    console.log('Changing face...')
+    console.log('Changing face...');
     var faceAnimation = faceAnimations.findAnimationClass(facePrimaryElem);
     facePrimaryElem.classList.remove(faceAnimation);
     // TODO: Triggers a layout, hrr. Should use classList API here instead.
@@ -209,7 +214,7 @@ function animateNavbar (prevState, currentState) {
     if (currentState === 'about') {
         socialLinksElem.classList.add('right-handed');
         siteLinksElem.classList.add('right-handed');
-        faceAnimation = faceAnimations.COUNTERCLOCKWISE
+        faceAnimation = faceAnimations.COUNTERCLOCKWISE;
     }
     else {
         socialLinksElem.classList.remove('right-handed');

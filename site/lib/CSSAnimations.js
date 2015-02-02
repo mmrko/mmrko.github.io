@@ -1,4 +1,4 @@
-function CSSAnimation () {
+function cssAnimation () {
 
     var supported = false;
     var prefixes = ['webkit', 'Moz', 'O', ''];
@@ -10,7 +10,7 @@ function CSSAnimation () {
 
         if (!prefixes[limit]) {
 
-            if (doc['animationName'] !== undefined) {
+            if (doc.animationName !== undefined) {
                 prefix = prefixes[limit];
                 start = 'animationstart';
                 end = 'animationend';
@@ -60,4 +60,4 @@ function CSSAnimation () {
     };
 }
 
-module.exports = CSSAnimation();
+module.exports = cssAnimation();

@@ -14,6 +14,6 @@ helpers.getNodeListItemByClassName = function (nodeList, className) {
 
     return elems;
 
-}
+};
 
 module.exports = helpers;
