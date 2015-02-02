@@ -6,9 +6,9 @@ data.work = {
             name: 'kotivinkki',
             title: 'Technical lead in a site renewal project',
             url: { href: 'http://www.kotivinkki.fi/', title: 'Homepage of Kotivinkki' },
-            description: 'During 2013-2014 alongside my studies I worked as the technical lead for a site renewal project of several smaller brands of ' +
+            description: 'During 2013-2014 I worked alongside my studies as the technical lead for a site renewal project of several smaller brands of ' +
             '<a class="link" href="http://www.a-lehdet.fi" target="_blank">A-lehdet</a>, Finland\'s 3rd largest magazine company. ' +
-            'One of the six sites I was responsible for was <a class="link" href="http://www.kotivinkki.fi" target="_blank">Kotivinkki.fi</a> (averages ~30 000 weekly visitors).',
+            'One of the six sites I was responsible for was <a class="link" href="http://www.kotivinkki.fi" target="_blank">Kotivinkki.fi</a>, which averages around 30 000 weekly visitors.',
             keywords: [ 'Drupal', 'Sass', 'shell scripting', 'RWD' ]
         },
         {
@@ -17,7 +17,7 @@ data.work = {
             url: { href: 'duckhunt', title: 'HTML5 prototype of Duck Hunt' },
             description: 'As a course project at the university I developed an HTML5-based version of the legendary Nintendo game Duck Hunt. ' +
             'Much thought went into optimizing rendering performance as the goal was to make the game playable on touch-enabled devices. ' +
-            'Click on the image on the left to give the game a go!',
+            'Click on the image to give the game a go!',
             keywords: [ 'CSS animations', 'timeline/render profiling', 'CreateJS' ]
         },
         {
@@ -37,7 +37,7 @@ data.work = {
             description: 'In 2013 and 2014 I applied for the <a class="link" href="http://medialab.aalto.fi/" target="_blank">New Media & Production major</a> ' +
             'at <a class="link" href="http://arts.aalto.fi/en/" target="_blank">Aalto Arts</a>. ' +
             'On both occasions I fell short but still earned a reserve spot for the program by finishing in the top 20 ' +
-            '(out of ~110 applicants).<br><br>In 2013\'s exam the task of the creative assignment was to visualize information flood in ' +
+            '(out of ~110 applicants).<br><br>In the 2013\'s exam the goal of the creative task was to visualize information flood in ' +
             'the contemporary society using Auguste Rodin\'s Thinker as a source of inspiration. Respectively, in 2014 the task ' +
             'was to depict the concept of Digital Divide using any given medium. I chose the browser of course :)',
             keywords: [ 'd3.js', 'Canvas API', 'Twitter API', 'Natural Earth', 'infovis' ]
@@ -65,12 +65,12 @@ data.work = {
                     url: 'http://www.aegee-helsinki.org/su2011/'
                 },
                 {
-                    name: 'EBM 2011 Pre-Event: FinEst Wintertale',
-                    url: 'http://www.aegee-helsinki.org/ebm11/'
-                },
-                {
                     name: 'AEGEE-Helsinki Network Meeting 2010: Welcome to the Winter Wonderland',
                     url: 'http://www.aegee-helsinki.org/nwm10/'
+                },
+                {
+                    name: 'EBM 2011 Pre-Event: FinEst Wintertale',
+                    url: 'http://www.aegee-helsinki.org/ebm11/'
                 }
             ]
         }
@@ -102,25 +102,26 @@ data.work = {
         {
             title: 'Volunteering as a best buddy for mentally challenged',
             description: 'In fall 2013 I began volunteering as a best buddy for a mentally challenged young man. We try seeing each other at least once a month and so far we\'ve ' +
-            'stuck with that plan pretty well. Although volunteering takes up some of one\'s limited spare time I feel that in the end it gives more than it takes.',
+            'stuck with that plan pretty well. Although this type of volunteering takes up somewhat of an mental effort I feel that in the end it gives more than it takes.',
             keywords: [ 'Make the world a better place' ]
         },
         {
             title: 'Research assistant in a stereoscopic movie experience project',
             description: 'I worked as a research assistant in the Visual Media Research Group at <a class="link" href="http://sci.aalto.fi/en/" target="_blank">Aalto SCI</a> ' +
-            'during 2010-2012. The research topics revolved around measuring stereoscopic movie experience and concave/convex displays. An article of one of the research projects I was involved in can be found ' +
-            '<a class="link" href="http://publicationslist.org/data/jukka.hakkinen/ref-78/SPIE%20Hakkinen%202011.pdf" target="_blank">here</a>.',
+            'during 2010-2012. The research topics revolved around evaluating the effects of different stereoscopic stimuli and concave/convex displays. ' +
+            'One of the articles on stereoscopic content can be found <a class="link" href="http://publicationslist.org/data/jukka.hakkinen/ref-78/SPIE%20Hakkinen%202011.pdf" target="_blank">here</a>.',
             keywords: [ 'Matlab', 'qualitative analysis', 'research experiment setup' ]
         },
         {
             title: 'Logo designs for AEGEE-Helsinki Summer University 2012',
-            description: '<a href="static/images/su2012_logos.jpg" target="_blank"><img class="su-2012-logos" src="static/images/su2012_logos.jpg" /></a>I quickly sketched out a few logo designs for AEGEE-Helsinki\'s Summer University project of 2012. The one in the middle was eventually chosen as the logo for the event.',
+            description: '<a href="static/images/su2012_logos.jpg" target="_blank"><img class="su-2012-logos" src="static/images/su2012_logos.jpg" /></a>I quickly sketched out a few logo designs for ' +
+            'AEGEE-Helsinki\'s Summer University project of 2012. The logo in the middle was eventually chosen as the logo for the event.',
             keywords: [ 'Vector graphics, Adobe Illustrator' ]
         },
         {
-            title: 'Administrator and content curator for student organization\'s website',
-            description: 'In 2010-2014 I was responsible for administering & curating content for the website of ' +
-            '<a class="link" href="http://www.aegee-helsinki.org/" target="_blank">AEGEE-Helsinki</a>.',
+            title: 'Site administrator and content curator for student organization\'s website',
+            description: 'In 2010-2014 I was responsible for administering & curating content for ' +
+            '<a class="link" href="http://www.aegee-helsinki.org/" target="_blank">AEGEE-Helsinki</a>\'s website.',
             keywords: [ 'PHP', 'CMS', 'Textpattern' ]
         }
     ]

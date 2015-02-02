@@ -1,9 +1,7 @@
 @import 'variables';
 @import 'common';
 
-html, body, .view, .banner {
-  min-width: 64em;
-}
+body > * { min-width: 70em; }
 
 @media only screen and (max-width: 767px) {
   @import 'mobile/base';

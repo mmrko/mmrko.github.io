@@ -19,14 +19,14 @@
 
 .intro {
   position:absolute;
-  width:100%;
+  z-index:-1;
   font-size:1.5em;
   user-select:none;
   cursor: default;
   text-shadow: 1px 1px rgb(70, 92, 115);
   transition: opacity 0.5s ease-in;
-  top:17.5%;
-  left:45%;
+  top: 2em;
+  left: 45%;
   transform-origin:left bottom;
 
   .no-js & {

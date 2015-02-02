@@ -1,5 +1,5 @@
-var workViewHandler = require('./workViewHandler');
-var animation = require('./CSSAnimations');
+var workViewHandler = require('./lib/workViewHandler');
+var animation = require('./lib/CSSAnimations');
 var bgPrimaryElem = document.getElementById('js-background-primary');
 var bgSecondaryElem = document.getElementById('js-background-secondary');
 var bannerElem = document.getElementById('js-banner');
@@ -25,17 +25,22 @@ var intro = (function (element) {
     var removed = false;
 
     var removeFromDom = function () {
+        removed = true;
         element.parentNode.removeChild(element);
         element.removeEventListener(animation.end, removeFromDom);
+        sessionStorage.setItem('introPlayed', true);
     };
 
-    element.addEventListener(animation.end, removeFromDom, false);
+    if (sessionStorage.getItem('introPlayed')) {
+        element.parentNode.removeChild(element);
+        remove = true;
+    }
 
     return {
         remove: function () {
             if (!removed) {
-                removed = true;
                 element.classList.add('animation-intro-end');
+                element.addEventListener(animation.end, removeFromDom, false);
             }
         }
     }

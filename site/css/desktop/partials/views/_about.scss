@@ -2,7 +2,6 @@
   max-width: 39em;
   padding: 1.5em 0;
   position: absolute;
-  margin-left: -0.5em;
 
   @media only screen and (max-width: 1280px) {
     max-width: 35em;
@@ -14,15 +13,18 @@
   margin: 0 0 5%;
   padding: 2.5%;
   border-left: 5px solid $cyan;
+  border-radius: 0 0.5em 0;
 
   &.paragraph-middle {
     width:85%;
     border-left-color: $yellow;
+    border-radius:0;
   }
 
   &.paragraph-bottom {
     width:75%;
     border-left-color: $red;
+    border-radius: 0 0 0.5em;
   }
 
 }

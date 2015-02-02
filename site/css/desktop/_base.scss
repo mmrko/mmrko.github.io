@@ -1,7 +1,5 @@
 html {
-
-  overflow:hidden;
-
+  overflow-y:hidden;
 }
 
 body {
@@ -20,7 +18,7 @@ body {
   cursor:pointer;
 
   a {
-    text-shadow: 1px 1px rgba(100, 100, 100, 0.75);
+    @include link-text-shadow;
   }
 
   &.github:hover .icon {
@@ -56,10 +54,11 @@ body {
 }
 
 .footer {
-  width:100%;
+  width:calc(100% - 1.5em);
   position:absolute;
   bottom:0;
   font-size:0.75em;
+  padding:0.75em;
 }
 
 .contact .link-item {
@@ -67,11 +66,13 @@ body {
 }
 
 .background-comment {
-  text-shadow: 1px solid black;
-  font-size:$tiny;
-  position:absolute;
-  right:0;
-  bottom:0;
+  font-size: 0.9em;
+  line-height: 1em;
+  padding: 0.75em;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  @include link-text-shadow;
 }
 
 @import './partials/background';

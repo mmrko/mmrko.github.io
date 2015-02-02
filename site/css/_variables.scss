@@ -11,3 +11,7 @@ $background-image-home: "static/images/laptop.jpg";
 $background-image-about: "static/images/cincinnati.jpg";
 $background-image-work: "static/images/ammersee.jpg";
 $face-picture: "static/images/faces.png";
+
+@mixin link-text-shadow {
+  text-shadow: 1px 1px rgba(100, 100, 100, 0.75);
+}
