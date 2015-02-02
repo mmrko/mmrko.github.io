@@ -71,23 +71,23 @@
 }
 
 .face-state-home {
-  background-position-x: 0%;
+  background-position: 0% 0%;
   box-shadow: 0px 0px 6px #3A4B67 inset;
 }
 
 .face-state-work {
-  background-position-x: 31.75%;
+  background-position: 31.75% 0%;
 }
 
 .face-state-about {
-  background-position-x: 63%;
+  background-position: 63% 0%;
   &.face-primary, &.face-secondary {
     .face-thumb { opacity:1; }
   }
 }
 
 .face-thumb {
-  background-position-x: 100%;
+  background-position: 100% 0%;
   padding: 2em;
   top: -8px;
   left: 13px;

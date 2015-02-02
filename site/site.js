@@ -1,5 +1,5 @@
 var workViewHandler = require('./workViewHandler');
-
+var animation = require('./CSSAnimations');
 var bgPrimaryElem = document.getElementById('js-background-primary');
 var bgSecondaryElem = document.getElementById('js-background-secondary');
 var bannerElem = document.getElementById('js-banner');
@@ -9,7 +9,6 @@ var facePrimaryElem = document.getElementById('js-face-primary');
 var faceSecondaryElem = document.getElementById('js-face-secondary');
 var introElem = document.getElementById('js-intro');
 var navBarElems = document.getElementsByClassName('navbar-item');
-var pfx = ['webkit', 'moz', 'MS', 'o', ''];
 
 var faceAnimations = {
     CLOCKWISE: 'animation-face-clockwise',
@@ -27,10 +26,10 @@ var intro = (function (element) {
 
     var removeFromDom = function () {
         element.parentNode.removeChild(element);
-        animationEvent(element, 'AnimationEnd', removeFromDom, true);
+        element.removeEventListener(animation.end, removeFromDom);
     };
 
-    animationEvent(element, 'AnimationEnd', removeFromDom);
+    element.addEventListener(animation.end, removeFromDom, false);
 
     return {
         remove: function () {
@@ -62,11 +61,24 @@ var bannerToggler = (function BannerToggler (initialState, downCb, upCb) {
 
 })('up', bannerDown, bannerUp);
 
-function animationEvent(element, type, callback, remove) {
-    for (var p = 0; p < pfx.length; p++) {
-        if (!pfx[p]) type = type.toLowerCase();
-        remove ? element.removeEventListener(pfx[p]+type, callback) : element.addEventListener(pfx[p]+type, callback, false);
+function transitionEndEventName () {
+    var i,
+        undefined,
+        el = document.createElement('div'),
+        transitions = {
+            'transition':'transitionend',
+            'OTransition':'otransitionend',  // oTransitionEnd in very old Opera
+            'MozTransition':'transitionend',
+            'WebkitTransition':'webkitTransitionEnd'
+        };
+
+    for (i in transitions) {
+        if (transitions.hasOwnProperty(i) && el.style[i] !== undefined) {
+            return transitions[i];
+        }
     }
+
+    //TODO: throw 'TransitionEnd event is not supported in this browser';
 }
 
 function resetBgSecondary () {
@@ -162,24 +174,69 @@ function changeState (currentState, nextState) {
 }
 
 function onHashChange (event) {
+
     var stateRegExp = /\/#(.+)/;
     var currentState = stateRegExp.exec(event.oldURL);
     var nextState = stateRegExp.exec(event.newURL);
 
     currentState = currentState ? currentState[1] : 'home';
     nextState = nextState ? nextState[1] : 'home';
-
     changeState(currentState, nextState);
+}
+
+if (!Function.prototype.bind) {
+  Function.prototype.bind = function (oThis) {
+    if (typeof this !== "function") {
+      // closest thing possible to the ECMAScript 5 internal IsCallable function
+      throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+
+    var aArgs = Array.prototype.slice.call(arguments, 1),
+        fToBind = this,
+        fNOP = function () {},
+        fBound = function () {
+          return fToBind.apply(this instanceof fNOP && oThis
+                                 ? this
+                                 : oThis,
+                               aArgs.concat(Array.prototype.slice.call(arguments)));
+        };
+
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+
+    return fBound;
+  };
 }
 
 workViewHandler.init();
 
-bgSecondaryElem.addEventListener('transitionend', resetBgSecondary, false);
-animationEvent(faceSecondaryElem, 'AnimationEnd', resetFaces);
-window.addEventListener('hashchange', onHashChange, false);
+bgSecondaryElem.addEventListener(transitionEndEventName(), resetBgSecondary, false);
+
+if (animation.supported) {
+    faceSecondaryElem.addEventListener(animation.end, resetFaces, false);
+}
+else {
+    console.warn('CSS Animations not supported!');
+}
 
 if (window.location.hash && window.location.hash !== 'home') {
     setTimeout(function () {
         changeState('home', window.location.hash.replace('#', ''));
     }, 0);
+}
+
+if (!('onhashchange' in window) || window.attachEvent) {
+    prev = window.location.href;
+    setInterval(function() {
+        next = window.location.href;
+        if (prev === next) return;
+        onHashChange.call(window, {
+            type: 'hashchange',
+            newURL: next,
+            oldURL: prev
+        });
+        prev = next;
+    }, 100);
+} else if (window.addEventListener) {
+    window.addEventListener('hashchange', onHashChange, false);
 }

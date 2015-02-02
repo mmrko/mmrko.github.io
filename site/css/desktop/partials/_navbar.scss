@@ -57,7 +57,7 @@ $bg-color-home: rgb(87, 114, 135);
 .navbar-item-bg {
   background-size: 100%;
   background-repeat-y: no-repeat;
-  background-position-x: 0;
+  background-position: 0 0;
 }
 
 .navbar-item-bg-state-about {
@@ -67,10 +67,10 @@ $bg-color-home: rgb(87, 114, 135);
 
 .navbar-item-bg-state-work {
   border-bottom-color: #0B1822;
-  background-position-y: 35px, 0, -35px;
+  background-position: 0 35px, 0 0, 0 -35px;
 }
 
 .navbar-item-bg-state-home {
   border-bottom-color: #3F575C;
-  background-position-y: -35px, 35px, 0;
+  background-position: 0 -35px, 0 35px, 0 0;
 }

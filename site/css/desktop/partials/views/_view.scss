@@ -11,13 +11,13 @@
 }
 
 .view-subview {
-  left:-9999px;
+  position:relative;
+  margin-left:-9999px;
   opacity:0;
   transition: opacity 0.5s ease;
 
   &:target {
-    left:0px;
-    display:block;
+    margin-left:0px;
     opacity: 1;
   }
 }

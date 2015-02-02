@@ -26,8 +26,10 @@
   transition: transform 0.5s ease 0.25s;
   transform: scaleY(0);
   transform-origin: top left;
+  -ms-overflow-style:none;
 
-  @media only screen and (min-width: 90em) {
+  @media only screen and (min-height: 45em) {
+
     overflow: scroll;
   }
 
@@ -177,6 +179,7 @@
 
 .preview-title {
   margin: -0.5em 0 0em;
+  font-weight:bold;
 }
 
 .preview-keywords {
@@ -214,11 +217,11 @@
   }
 
   .kotivinkki & { background-position: 0 0; }
-  .duckhunt & { background-position-x: 20%; }
-  .wtf-helsinki & { background-position-x: 40%; }
-  .new-media-aalto & { background-position-x: 60%; }
-  .new-media-aalto &:first-child { background-position-x: 80%; }
-  .aegee & { background-position-x: 100%; }
+  .duckhunt & { background-position: 20% 0; }
+  .wtf-helsinki & { background-position: 40% 0; }
+  .new-media-aalto & { background-position: 60% 0; }
+  .new-media-aalto &:first-child { background-position: 80% 0; }
+  .aegee & { background-position: 100% 0; }
 }
 
 .aegee-links {
