@@ -1,0 +1,31 @@
+<p class="work-view-description">
+    Below you can find some videos I have shot and edited as promo material mostly for different events of AEGEE-Helsinki.
+    Sadly enough for the past couple of years I haven't really found the time to do more video editing. It's a really nice side hobby.
+    The creative possibilities are endless!
+    <h5 class="preview-keywords">
+        Keywords: <span class="preview-keywords-title">Adobe Premiere, Adobe After Effects, Adobe Lightroom, Canon DSLR</span>
+    </h5>
+</p>
+
+<ul class="work-view-links-subview">
+    {{#each page.work.video}}
+    <li class="work-view-links-subview-item {{#if @first}}selected{{/if}}">{{this.title}}</li>
+    {{/each}}
+</ul>
+
+<hr class="separator">
+
+<div class="work-view-subview">
+    {{#each page.work.video}}
+    <div class="work-view-subview-item {{#if @first}}active{{/if}}">
+        <h3 class="preview-title">{{this.title}}</h3>
+        <div class="preview-content clearfix">
+            <div class="preview-video-container">
+                <iframe src="//player.vimeo.com/video/{{this.vimeoId}}?color=0D8686&title=0&byline=0&portrait=0" width="560" height="320" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+            {{#ifvalue this.name equals='norcom'}}<div class="password-note">Password: <span class="password-note-word">watch</span></div>{{/ifvalue}}
+        </div>
+
+    </div>
+    {{/each}}
+</div>

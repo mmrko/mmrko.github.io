@@ -28,6 +28,10 @@
   top:17.5%;
   left:45%;
   transform-origin:left bottom;
+
+  .no-js & {
+    display:none;
+  }
 }
 
 .animation-intro-start {

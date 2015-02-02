@@ -1,0 +1,11 @@
+<div class="work-view-subview">
+    {{#each page.work.other}}
+    <div class="work-view-subview-item active clearfix">
+        <h3 class="preview-title">{{this.title}}</h3>
+        <h5 class="preview-keywords">Keywords: <span class="preview-keywords-title">{{join this.keywords}}</span></h5>
+        <div class="preview-content clearfix">
+            {{{this.description}}}
+        </div>
+    </div>
+    {{/each}}
+</div>

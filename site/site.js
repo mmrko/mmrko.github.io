@@ -14,7 +14,11 @@ var pfx = ['webkit', 'moz', 'MS', 'o', ''];
 var faceAnimations = {
     CLOCKWISE: 'animation-face-clockwise',
     COUNTERCLOCKWISE: 'animation-face-counter-clockwise',
-    FADE: 'animation-face-fade'
+    FADE: 'animation-face-fade',
+    findAnimationClass: function (elem) {
+        var match = /animation\-face\-\S*/.exec(elem.className);
+        return match ? match[0] : '';
+    }
 };
 
 var intro = (function (element) {
@@ -26,12 +30,13 @@ var intro = (function (element) {
         animationEvent(element, 'AnimationEnd', removeFromDom, true);
     };
 
+    animationEvent(element, 'AnimationEnd', removeFromDom);
+
     return {
         remove: function () {
             if (!removed) {
                 removed = true;
                 element.classList.add('animation-intro-end');
-                animationEvent(element, 'AnimationEnd', removeFromDom);
             }
         }
     }
@@ -65,33 +70,37 @@ function animationEvent(element, type, callback, remove) {
 }
 
 function resetBgSecondary () {
-    console.log('transitioned!');
+    console.log('Resetting background...');
+
+    // TODO: Triggers a document wide layout, hrr. Should use classList API here instead.
     bgSecondaryElem.className = bgPrimaryElem.className;
+
     setTimeout(function () {
         bgSecondaryElem.classList.add('background-transition');
     }, 0);
+
 }
 
-function changeBackground (nextState) {
-    // TODO: Triggers a document wide layout, hrr. Should use classList API here instead.
-    bgPrimaryElem.className = [ 'background', 'background-state-' + nextState ].join(' ');
-    bgSecondaryElem.classList.add('background-hide');
-    bgSecondaryElem.addEventListener('transitionend', resetBgSecondary, false);
-}
-
-function resetFaces (animation, event) {
-    facePrimaryElem.classList.remove(animation);
+function resetFaces () {
+    console.log('Changing face...')
+    var faceAnimation = faceAnimations.findAnimationClass(facePrimaryElem);
+    facePrimaryElem.classList.remove(faceAnimation);
+    // TODO: Triggers a layout, hrr. Should use classList API here instead.
     faceSecondaryElem.className = facePrimaryElem.className.replace('face-primary', 'face-secondary');
 }
 
-function changeFace (nextState, stateAnimation) {
+function changeBackground (currentState, nextState) {
+    bgPrimaryElem.classList.remove('background-state-' + currentState);
+    bgPrimaryElem.classList.add('background-state-' + nextState);
+    bgSecondaryElem.classList.add('background-hide');
+}
 
-    facePrimaryElem.className = facePrimaryElem.className.replace(/face\-state-\w+/i, [ 'face-state', nextState ].join('-'));
+function changeFace (currentState, nextState, faceAnimation) {
+    facePrimaryElem.classList.remove('face-state-' + currentState);
+    facePrimaryElem.classList.add('face-state-' + nextState);
+    facePrimaryElem.classList.add(faceAnimation);
+    faceSecondaryElem.classList.add(faceAnimation);
 
-    facePrimaryElem.classList.add(stateAnimation);
-    faceSecondaryElem.classList.add(stateAnimation);
-
-    animationEvent(faceSecondaryElem, 'AnimationEnd', resetFaces.bind(null, stateAnimation));
 }
 
 function changeNavbarItem (currentState, nextState) {
@@ -108,12 +117,12 @@ function changeNavbarItem (currentState, nextState) {
 
 function animateNavbar (currentState, nextState) {
 
-    var direction = faceAnimations.FADE;
+    var faceAnimation = faceAnimations.FADE;
 
     if (nextState === 'about') {
         socialLinksElem.classList.add('right-handed');
         siteLinksElem.classList.add('right-handed');
-        direction = faceAnimations.COUNTERCLOCKWISE
+        faceAnimation = faceAnimations.COUNTERCLOCKWISE
     }
     else {
         socialLinksElem.classList.remove('right-handed');
@@ -121,10 +130,10 @@ function animateNavbar (currentState, nextState) {
     }
 
     if (currentState === 'about') {
-        direction = faceAnimations.CLOCKWISE;
+        faceAnimation = faceAnimations.CLOCKWISE;
     }
 
-    changeFace(nextState, direction);
+    changeFace(currentState, nextState, faceAnimation);
 
     changeNavbarItem(currentState, nextState);
 
@@ -138,7 +147,7 @@ function changeState (currentState, nextState) {
 
     console.log('States:', currentState, '->', nextState)
 
-    changeBackground(nextState);
+    changeBackground(currentState, nextState);
 
     animateNavbar(currentState, nextState);
 
@@ -157,16 +166,20 @@ function onHashChange (event) {
     var currentState = stateRegExp.exec(event.oldURL);
     var nextState = stateRegExp.exec(event.newURL);
 
-    currentState = currentState ? currentState[1] : '';
-    nextState = nextState ? nextState[1] : '';
+    currentState = currentState ? currentState[1] : 'home';
+    nextState = nextState ? nextState[1] : 'home';
 
     changeState(currentState, nextState);
 }
 
-if (window.location.hash && window.location.hash !== 'home') {
-    changeState('home', window.location.hash.replace('#', ''));
-}
-
 workViewHandler.init();
 
+bgSecondaryElem.addEventListener('transitionend', resetBgSecondary, false);
+animationEvent(faceSecondaryElem, 'AnimationEnd', resetFaces);
 window.addEventListener('hashchange', onHashChange, false);
+
+if (window.location.hash && window.location.hash !== 'home') {
+    setTimeout(function () {
+        changeState('home', window.location.hash.replace('#', ''));
+    }, 0);
+}

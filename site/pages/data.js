@@ -4,36 +4,126 @@ data.work = {
     web: [
         {
             name: 'kotivinkki',
-            title: 'Technical lead in a media company\'s site renewal project',
-            url: 'http://www.kotivinkki.fi/',
-            description: 'blaa blaa kotivinkki'
+            title: 'Technical lead in a site renewal project',
+            url: { href: 'http://www.kotivinkki.fi/', title: 'Homepage of Kotivinkki' },
+            description: 'During 2013-2014 alongside my studies I worked as the technical lead for a site renewal project of several smaller brands of ' +
+            '<a class="link" href="http://www.a-lehdet.fi" target="_blank">A-lehdet</a>, Finland\'s 3rd largest magazine company. ' +
+            'One of the six sites I was responsible for was <a class="link" href="http://www.kotivinkki.fi" target="_blank">Kotivinkki.fi</a> (averages ~30 000 weekly visitors).',
+            keywords: [ 'Drupal', 'Sass', 'shell scripting', 'RWD' ]
         },
         {
             name: 'duckhunt',
-            title: 'First stab at a touch-enabled HTML5 game',
-            url: 'duckhunt',
-            description: 'blaa blaa blaa ducks'
+            title: 'First stab at a touch-friendly HTML5 game',
+            url: { href: 'duckhunt', title: 'HTML5 prototype of Duck Hunt' },
+            description: 'As a course project at the university I developed an HTML5-based version of the legendary Nintendo game Duck Hunt. ' +
+            'Much thought went into optimizing rendering performance as the goal was to make the game playable on touch-enabled devices. ' +
+            'Click on the image on the left to give the game a go!',
+            keywords: [ 'CSS animations', 'timeline/render profiling', 'CreateJS' ]
         },
         {
             name: 'wtf-helsinki',
             title: 'Creating a mobile-friendly digital brochure experience',
-            url: 'http://www.finnishdesignthinking.com/digitalbook/',
-            description: 'blaa blaa blaa WTF'
+            url: { href: 'http://www.finnishdesignthinking.com/digitalbook/' },
+            description: 'During my time at <a class="link" href="http://www.thinglink.com/" target="_blank">ThingLink</a> I developed a ' +
+            'mobile-friendly digital brochure for the <a class="link" href="http://www.radicaldesignweek.com/" target="_blank">Radical Design Week</a> 2012 in Shanghai. ' +
+            'I worked on the project in collaboration with <a class="link" href="www.wtfhelsinki.fi" target="_blank">WTF Helsinki</a>, a creative digital agency from Helsinki, ' +
+            'carrying the responsibility for the technical implementation and project coordination.',
+            keywords: [ 'jQuery Mobile', 'project coordination & collaboration', 'Radical Design Week' ]
         },
         {
             name: 'new-media-aalto',
-            title: 'My submissions for a New Media major exam at Aalto Arts',
-            url: 'newmedia',
-            description: 'earned me a reserve spot on both occasions'
+            title: 'Aalto Arts New Media & Production major entrance exam submissions',
+            url: { href: [ 'newmedia2013', 'newmedia2014' ], title: [ 'Submission for the 2013 New Media & Production entrance examination', 'Submission for the 2014 New Media & Production entrance examination' ] },
+            description: 'In 2013 and 2014 I applied for the <a class="link" href="http://medialab.aalto.fi/" target="_blank">New Media & Production major</a> ' +
+            'at <a class="link" href="http://arts.aalto.fi/en/" target="_blank">Aalto Arts</a>. ' +
+            'On both occasions I fell short but still earned a reserve spot for the program by finishing in the top 20 ' +
+            '(out of ~110 applicants).<br><br>In 2013\'s exam the task of the creative assignment was to visualize information flood in ' +
+            'the contemporary society using Auguste Rodin\'s Thinker as a source of inspiration. Respectively, in 2014 the task ' +
+            'was to depict the concept of Digital Divide using any given medium. I chose the browser of course :)',
+            keywords: [ 'd3.js', 'Canvas API', 'Twitter API', 'Natural Earth', 'infovis' ]
         },
         {
             name: 'aegee',
-            title: 'Websites created for international student events',
-            url: 'http://www.aegee-helsinki.org/',
-            description: 'earned me a reserve spot on both occasions'
+            title: 'Putting together websites for international student events',
+            url: { href: 'http://www.aegee-helsinki.org/su2011', title: 'AEGEE-Helsinki Summer University 2011 homepage' },
+            description: 'During 2010-2014 I was an active member of <a class="link" href="http://www.aegee-helsinki.org/" target="_blank">AEGEE-Helsinki</a>' +
+            ', an international student organization. I took part in organizing various European level events including ' +
+            '<a class="link" href="http://aegee.org/su/" target="_blank">AEGEE Summer Universities</a> that bring together ' +
+            'over 2000 students each year from around Europe to enjoy cultural and social activities in the host countries.',
+            keywords: [ 'Flash', 'Adobe Illustrator', 'event management', 'content curation'],
+            websites: [
+                {
+                    name: 'AEGEE Travelling Summer University 2013: Scandinavian Dream',
+                    url: 'http://www.aegee-helsinki.org/su2013/'
+                },
+                {
+                    name: 'AEGEE Travelling Summer University 2012: FinEst Design',
+                    url: 'http://www.aegee-helsinki.org/su2012/'
+                },
+                {
+                    name: 'AEGEE Travelling Summer University 2011: Discover Your True Colours',
+                    url: 'http://www.aegee-helsinki.org/su2011/'
+                },
+                {
+                    name: 'EBM 2011 Pre-Event: FinEst Wintertale',
+                    url: 'http://www.aegee-helsinki.org/ebm11/'
+                },
+                {
+                    name: 'AEGEE-Helsinki Network Meeting 2010: Welcome to the Winter Wonderland',
+                    url: 'http://www.aegee-helsinki.org/nwm10/'
+                }
+            ]
+        }
+    ],
+    video: [
+        {
+            title: 'AEGEE Travelling Summer University 2012: FinEst Design',
+            vimeoId: 53296163
+        },
+        {
+            title: 'AEGEE Travelling Summer University 2012: FinEst Design teaser',
+            vimeoId: 36000484
+        },
+        {
+            name: 'norcom',
+            title: 'NorCom AG promotional video for the IBC 2011 fair in Amsterdam',
+            vimeoId: 58333471
+        },
+        {
+            title: 'AEGEE-Helsinki promoting Green Travelling – Sustainable Europe',
+            vimeoId: 56352182
+        },
+        {
+            title: 'AEGEE Travelling Summer University 2012: FinEst Design trailer',
+            vimeoId: 40616845
+        }
+    ],
+    other: [
+        {
+            title: 'Volunteering as a best buddy for mentally challenged',
+            description: 'In fall 2013 I began volunteering as a best buddy for a mentally challenged young man. We try seeing each other at least once a month and so far we\'ve ' +
+            'stuck with that plan pretty well. Although volunteering takes up some of one\'s limited spare time I feel that in the end it gives more than it takes.',
+            keywords: [ 'Make the world a better place' ]
+        },
+        {
+            title: 'Research assistant in a stereoscopic movie experience project',
+            description: 'I worked as a research assistant in the Visual Media Research Group at <a class="link" href="http://sci.aalto.fi/en/" target="_blank">Aalto SCI</a> ' +
+            'during 2010-2012. The research topics revolved around measuring stereoscopic movie experience and concave/convex displays. An article of one of the research projects I was involved in can be found ' +
+            '<a class="link" href="http://publicationslist.org/data/jukka.hakkinen/ref-78/SPIE%20Hakkinen%202011.pdf" target="_blank">here</a>.',
+            keywords: [ 'Matlab', 'qualitative analysis', 'research experiment setup' ]
+        },
+        {
+            title: 'Logo designs for AEGEE-Helsinki Summer University 2012',
+            description: '<a href="static/images/su2012_logos.jpg" target="_blank"><img class="su-2012-logos" src="static/images/su2012_logos.jpg" /></a>I quickly sketched out a few logo designs for AEGEE-Helsinki\'s Summer University project of 2012. The one in the middle was eventually chosen as the logo for the event.',
+            keywords: [ 'Vector graphics, Adobe Illustrator' ]
+        },
+        {
+            title: 'Administrator and content curator for student organization\'s website',
+            description: 'In 2010-2014 I was responsible for administering & curating content for the website of ' +
+            '<a class="link" href="http://www.aegee-helsinki.org/" target="_blank">AEGEE-Helsinki</a>.',
+            keywords: [ 'PHP', 'CMS', 'Textpattern' ]
         }
     ]
 }
 
 module.exports = data;
-

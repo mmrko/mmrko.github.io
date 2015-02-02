@@ -1,5 +1,7 @@
 <p class="work-view-description">
-    Here's something I've worked on in the past:
+    Currently I'm working on my thesis project exploring the capabilities of <b>photoluminescene-based product authentication
+    for smartphones</b>. The technologies and languages I've worked with during the project include JS, Java, C#, C++, Apache Cordova and AngularJS.
+    Below I've gathered a brief summary of the things I've worked on in the past. Tap on the links to find out more!
 </p>
 
 <ul class="work-view-links-subview">
@@ -12,10 +14,16 @@
 
 <div class="work-view-subview">
     {{#each page.work.web}}
-    <div class="work-view-subview-item {{this.name}} {{#if @first}}active{{/if}}">
-        <a class="preview-image" href="{{this.url}}"></a>
+    <div class="work-view-subview-item {{this.name}} {{#if @first}}active{{/if}} clearfix">
         <h3 class="preview-title">{{this.title}}</h3>
-        <p class="preview-description">{{this.description}}</p>
+        <h5 class="preview-keywords">Keywords: <span class="preview-keywords-title">{{join this.keywords}}</span></h5>
+        <div class="preview-content clearfix">
+            <div class="preview-image-container">
+                {{{preview-image this.url 'preview-image'}}}
+            </div>
+            {{{this.description}}}
+            {{#ifvalue this.name equals='aegee' }} {{>views/work/aegee}} {{/ifvalue}}
+        </div>
     </div>
     {{/each}}
 </div>

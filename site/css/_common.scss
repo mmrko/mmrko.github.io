@@ -20,6 +20,16 @@ a {
   text-decoration:none;
 }
 
+.clearfix {
+  &:before, &:after {
+      content: "";
+      display: table;
+  }
+  &:after {
+      clear: both;
+  }
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;

@@ -71,13 +71,21 @@ WorkViewHandler.prototype.getViewName = function ($view) {
     return $view.getAttribute('data-work-view-name');
 }
 
-WorkViewHandler.prototype.init = function () {
+WorkViewHandler.prototype.init = function ($container) {
 
-    var $viewNav = document.getElementById('js-work-view-nav');
-    var $views = document.getElementsByClassName('work-view');
-    var view, viewName, viewChildElems, i, length;
+    var $views = [];
+    var $viewNav, view, viewName, viewChildElems, i, length;
 
-    this.$selectedTab = $viewNav.getElementsByClassName('selected')[0];
+    $container = $container || document.getElementById('js-work-view-nav');
+
+    Array.prototype.forEach.call($container.children, function ($child) {
+        if ($child.classList.contains('work-view-nav')) {
+            $viewNav = $child;
+        }
+        else if ($child.classList.contains('work-view')) {
+            $views.push($child);
+        }
+    });
 
     Array.prototype.forEach.call($views, function ($view, idx) {
 
@@ -110,6 +118,8 @@ WorkViewHandler.prototype.init = function () {
         $view.addEventListener('click', changeWorkSubView.bind(this, viewName), false);
 
     }.bind(this));
+
+    this.$selectedTab = $viewNav.getElementsByClassName('selected')[0];
 
     $viewNav.addEventListener('click', changeWorkView.bind(this), false);
 };

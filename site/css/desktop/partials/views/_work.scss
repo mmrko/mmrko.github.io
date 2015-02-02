@@ -14,16 +14,19 @@
 }
 
 .work-view-container {
+  z-index: 1;
   position:absolute;
   top:0;
   right:1em;
   margin: -0.5em 0 0;
   width: 50vw;
+  max-height: 100vh;
+  min-width: 36em;
   background: rgba(0, 0, 0, 0.80);
   transition: transform 0.5s ease 0.25s;
   transform: scaleY(0);
   transform-origin: top left;
-  min-width:32em;
+  overflow: scroll;
 
   .view-subview:target & {
     transform: scaleY(1);
@@ -34,6 +37,9 @@
   padding: 0;
   list-style: none;
   text-align: center;
+  .no-js & {
+    display:none;
+  }
 }
 
 .work-view-nav-link {
@@ -115,24 +121,17 @@
     display:block;
     opacity: 1;
   }
-
-  > * {
-    margin: 0.5em 0;
-    &:first-child {
-      margin-top: 0;
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
 }
 
-.work-view-description {}
+.work-view-description { margin:0; }
 
 .work-view-links-subview {
   color:$gray;
   padding: 0 1.5em;
   list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAJUlEQVR42mNgAILy8vL/DLgASBKnApgkVgXIkhgKiNKJ005s4gDLbCZBiSxfygAAAABJRU5ErkJggg==");
+  .no-js & {
+    display:none;
+  }
 }
 
 .work-view-links-subview-item {
@@ -144,56 +143,99 @@
   }
 
   &.selected {
-    color: $white;
+    color: $yellow;
     list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVR42mNgwAfKy8v/48I4FeA0AacVDFQBAP9wJkE/KhUMAAAAAElFTkSuQmCC");
   }
 }
 
 .work-view-subview {
-  // margin-top: 1em;
-  // box-shadow: 0px 0px 15px rgb(31, 31, 31) inset;
-  // padding: 0.75em;
-  // border-radius: 0.25em;
+  > * { padding: 0.5em; }
 }
 
 .work-view-subview-item {
-  @include clearfix();
   display:none;
 
-  > * {
-    float:left;
+  &.active {
+    display: block;
+    animation: display-work-item 0.5s;
   }
 
-  &.active {
-    display:block;
+  .no-js & {
+    display: block;
+  }
+
+  iframe {
+    width:100%;
   }
 }
 
 .separator {
-  border-color:$gray;
-  margin:  1em 0;
-}
-
-.preview-image {
-  max-width:calc(40% - 0.75em);
-  width: 15em; height: 8.4375em;
-  background: transparent top left no-repeat;
-  box-shadow: 0px 0px 6px black inset;
-  background-image: url(static/images/work.jpg);
-  margin-right: 0.75em;
-
-  .kotivinkki & { background-position: 0 0; }
-  .duckhunt & { background-position-x: 25%; }
-  .wtf-helsinki & { background-position-x: 50%; }
-  .new-media-aalto & { background-position-x: 75%; }
-  .aegee & { background-position-x: 100%; }
+  border-color:#3F3F3F;
+  margin: 1.25em 0;
 }
 
 .preview-title {
-  margin: 0 0 0.5em;;
-  width:60%;
+  margin: -0.5em 0 0em;
 }
 
-.preview-description {
-  margin:0;
+.preview-keywords {
+  margin: 0;
+}
+
+.preview-keywords-title {
+  color: $gray;
+}
+
+.preview-content {
+  margin-top: 0.5em;
+  text-align:justify;
+}
+
+.preview-image-container {
+  margin: 0.25em 0.5em 0 0;
+  float:left;
+}
+
+.preview-video-container {
+  width:100%;
+}
+
+.preview-image {
+  width: 15em; height: 8.4375em;
+  background: transparent top left no-repeat;
+  background-image: url(static/images/work.jpg);
+  box-shadow: 0px 0px 6px black inset;
+  display:block;
+  margin-top: 0.5em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  .kotivinkki & { background-position: 0 0; }
+  .duckhunt & { background-position-x: 20%; }
+  .wtf-helsinki & { background-position-x: 40%; }
+  .new-media-aalto & { background-position-x: 60%; }
+  .new-media-aalto &:first-child { background-position-x: 80%; }
+  .aegee & { background-position-x: 100%; }
+}
+
+.aegee-links {
+  margin: 0.5em 0 0;
+  clear: both;
+}
+
+.password-note {
+  font-weight: bold;
+  text-align: center;
+}
+
+.password-note-word {
+  color: $red;
+}
+
+.su-2012-logos {
+  width: 13em;
+  float: left;
+  margin: 0.5em 0.75em 0 0;
 }
