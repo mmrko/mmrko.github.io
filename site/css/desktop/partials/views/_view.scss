@@ -12,14 +12,12 @@
 .view-subview {
   height: calc(100% - 0.5em);
   width:100%;
-  position:relative;
-  display:none;
+  position:absolute;
+  transition: opacity 0.5s ease;
   opacity:0;
 
   &:target {
-    display:block;
     opacity: 1;
-    animation: display-fade 0.5s ease;
   }
 }
 
