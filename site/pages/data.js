@@ -7,7 +7,7 @@ data.work = {
             title: 'Technical lead in a site renewal project',
             url: { href: 'http://www.kotivinkki.fi/', title: 'Homepage of Kotivinkki' },
             description: 'During 2013-2014 I worked alongside my studies as the technical lead for a site renewal project of several smaller brands of ' +
-            '<a class="link" href="http://www.a-lehdet.fi" target="_blank">A-lehdet</a>, Finland\'s 3rd largest magazine company. ' +
+            '<a class="link" href="https://www.linkedin.com/company/a-lehdet-oy" target="_blank">A-lehdet</a>, Finland\'s 3rd largest magazine company. ' +
             'One of the six sites I was responsible for was <a class="link" href="http://www.kotivinkki.fi" target="_blank">Kotivinkki.fi</a>, which averages around 30 000 weekly visitors.',
             keywords: [ 'Drupal', 'Sass', 'shell scripting', 'RWD' ]
         },
@@ -36,11 +36,11 @@ data.work = {
             url: { href: [ 'newmedia2013', 'newmedia2014' ], title: [ 'Submission for the 2013 New Media & Production entrance examination', 'Submission for the 2014 New Media & Production entrance examination' ] },
             description: 'In 2013 and 2014 I applied for the <a class="link" href="http://medialab.aalto.fi/" target="_blank">New Media & Production major</a> ' +
             'at <a class="link" href="http://arts.aalto.fi/en/" target="_blank">Aalto Arts</a>. ' +
-            'On both occasions I fell short but still earned a reserve spot for the program by finishing in the top 20 ' +
+            'On both occasions I fell just a few places short but earned a reserve spot for the program by finishing in the top 20 ' +
             '(out of ~110 applicants).<br><br>In the 2013\'s exam the goal of the creative task was to visualize information flood in ' +
             'the contemporary society using Auguste Rodin\'s Thinker as a source of inspiration. Respectively, in 2014 the task ' +
             'was to depict the concept of Digital Divide using any given medium. I chose the browser of course :)',
-            keywords: [ 'd3.js', 'Canvas API', 'Twitter API', 'Natural Earth', 'infovis' ]
+            keywords: [ 'D3.js', 'Canvas API', 'Twitter API', 'Natural Earth', 'infovis' ]
         },
         {
             name: 'aegee',
@@ -101,25 +101,25 @@ data.work = {
     other: [
         {
             title: 'Volunteering as a best buddy for mentally challenged',
-            description: 'In fall 2013 I began volunteering as a best buddy for a mentally challenged young man. We see each other once or twice a month ' +
-            'to hang out, cook food and watch a movie. The best thing about volunteer work is knowning that you\'re making an effort to have a positive impact on someone\'s life.',
+            description: 'In fall 2013 I began volunteering as a best buddy for a mentally challenged young man. I try seeing him once or twice a month ' +
+            'to hang out, cook food and watch a movie. The best thing about this experience, and in volunteer work in general, is knowning that you\'re making an effort to have a positive impact on someone\'s life.',
             keywords: [ 'Make the world a better place' ]
         },
         {
-            title: 'Research assistant in a stereoscopic movie experience project',
+            title: 'Working as a research assistant at the university',
             description: 'I worked as a research assistant in the Visual Media Research Group at <a class="link" href="http://sci.aalto.fi/en/" target="_blank">Aalto SCI</a> ' +
             'during 2010-2012. The research topics revolved around evaluating the effects of different stereoscopic stimuli and concave/convex displays. ' +
-            'One of the articles on stereoscopic content can be found <a class="link" href="http://publicationslist.org/data/jukka.hakkinen/ref-78/SPIE%20Hakkinen%202011.pdf" target="_blank">here</a>.',
+            'One the research projects focused on the <a class="link" href="http://publicationslist.org/data/jukka.hakkinen/ref-78/SPIE%20Hakkinen%202011.pdf" target="_blank">effect of image scaling on stereoscopic movie experience</a>.',
             keywords: [ 'Matlab', 'qualitative analysis', 'research experiment setup' ]
         },
         {
-            title: 'Logo designs for AEGEE-Helsinki Summer University 2012',
+            title: 'Designing logos for the AEGEE-Helsinki Summer University 2012',
             description: '<a href="static/images/su2012_logos.jpg" target="_blank"><img class="su-2012-logos" src="static/images/su2012_logos.jpg" /></a>I quickly sketched out a few logo designs for ' +
             'AEGEE-Helsinki\'s Summer University project of 2012. The logo in the middle was eventually chosen as the logo for the event.',
             keywords: [ 'Vector graphics, Adobe Illustrator' ]
         },
         {
-            title: 'Site administrator and content curator for student organization\'s website',
+            title: 'Site administration and content curation in a student organization',
             description: 'In 2010-2014 I was responsible for administering & curating content for ' +
             '<a class="link" href="http://www.aegee-helsinki.org/" target="_blank">AEGEE-Helsinki</a>\'s website.',
             keywords: [ 'PHP', 'CMS', 'Textpattern' ]
