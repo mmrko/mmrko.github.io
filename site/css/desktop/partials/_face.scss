@@ -27,9 +27,16 @@
   height: 10em;
   margin-left: calc(37.5% - 5em);
   z-index: 1;
-  animation: fade-in 1s forwards, move-in-from-above 0.75s ease-out;
   background-color: rgb(132, 154, 158);
   border-radius: 100%;
+  opacity:0;
+  .no-js & {
+    opacity: 1;
+  }
+}
+
+.face-container-animation {
+  animation: fade-in 1s forwards, move-in-from-above 0.75s ease-out;
 }
 
 .face {

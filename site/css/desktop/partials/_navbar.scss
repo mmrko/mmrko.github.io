@@ -32,10 +32,13 @@
 .navbar-item {
   opacity:0;
   background: rgba(0, 0, 0, 0.25);
-  animation: fade-in 1s 0.6s forwards;
   transition: transform 0.8s, background-position 0.5s;
   transform: translateY(0);
   border-bottom: 1px solid;
+}
+
+.navbar-item-animation {
+  animation: fade-in 1s 0.6s forwards;
 }
 
 $bg-color-about: rgb(190, 190, 190);

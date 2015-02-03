@@ -1,6 +1,6 @@
 @keyframes animation-intro {
   0% {
-    transform: scale(0.5) translate3d(-4em, 2em, 0);
+    transform: scale(0.5) translate3d(-4em, 3em, 0);
   }
   80% {
     transform: scale(1.05);
@@ -25,9 +25,10 @@
   cursor: default;
   text-shadow: 1px 1px rgb(70, 92, 115);
   transition: opacity 0.5s ease-in;
-  top: 2em;
+  top: 1.5em;
   left: 45%;
   transform-origin:left bottom;
+  opacity:0;
 
   .no-js & {
     display:none;
@@ -35,8 +36,7 @@
 }
 
 .animation-intro-start {
-  opacity: 0;
-  animation: animation-intro 0.5s 1.75s forwards;
+  animation: animation-intro 0.5s 1.5s forwards;
 }
 
 .animation-intro-end {

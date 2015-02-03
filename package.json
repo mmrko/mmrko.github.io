@@ -19,7 +19,7 @@
   "scripts": {
     "test": "exit 0",
     "serve": "broccoli-taco serve",
-    "build": "rm -rf dist && gulp jshint && BROCCOLI_TACO_ENV=production broccoli-taco build dist && cp site/favicon.ico dist/ && rm -rf dist/static/images/raw"
+    "build": "rm -rf dist && gulp jshint && BROCCOLI_TACO_ENV=production broccoli-taco build dist && cp site/favicon.ico dist/ && cp site/CNAME dist/ && rm -rf dist/static/images/raw"
   },
   "repository": {
     "type": "git",

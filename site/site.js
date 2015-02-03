@@ -6,10 +6,13 @@ var bgSecondaryElem = document.getElementById('js-background-secondary');
 var bannerElem = document.getElementById('js-banner');
 var socialLinksElem = document.getElementById('js-social');
 var siteLinksElem = document.getElementById('js-site-links');
+var faceContainerElem = document.getElementById('js-face');
 var facePrimaryElem = document.getElementById('js-face-primary');
 var faceSecondaryElem = document.getElementById('js-face-secondary');
 var introElem = document.getElementById('js-intro');
 var navBarElems = document.getElementsByClassName('navbar-item');
+
+var faceImages = new Image();
 
 var bannerDown = bannerElem.classList.add.bind(bannerElem.classList, 'banner-down');
 var bannerUp = bannerElem.classList.remove.bind(bannerElem.classList, 'banner-down');
@@ -257,3 +260,18 @@ else {
 bgSecondaryElem.addEventListener(transitionEndEventName(), resetBgSecondary, false);
 
 stateManager.onStateChange(changeState);
+
+faceImages.onload = function (event) {
+
+    var i, length;
+
+    faceContainerElem.classList.add('face-container-animation');
+    introElem.classList.add('animation-intro-start');
+
+    for (i = 0, length = navBarElems.length; i < length; i++) {
+        navBarElems[i].classList.add('navbar-item-animation');
+    }
+
+};
+
+faceImages.src = 'static/images/faces.png';
