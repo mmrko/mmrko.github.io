@@ -8,7 +8,7 @@ data.work = {
             url: { href: 'http://www.kotivinkki.fi/', title: 'Homepage of Kotivinkki' },
             description: 'During 2013-2014 I worked alongside my studies as the technical lead for a site renewal project of several smaller brands of ' +
             '<a class="link" href="https://www.linkedin.com/company/a-lehdet-oy" target="_blank">A-lehdet</a>, Finland\'s 3rd largest magazine company. ' +
-            'One of the six sites I was responsible for was <a class="link" href="http://www.kotivinkki.fi" target="_blank">Kotivinkki.fi</a>, which averages around 30 000 weekly visitors.',
+            'One of the six sites I developed was <a class="link" href="http://www.kotivinkki.fi" target="_blank">Kotivinkki.fi</a>, which averages around 30 000 weekly visitors.',
             keywords: [ 'Drupal', 'Sass', 'shell scripting', 'RWD' ]
         },
         {
@@ -26,7 +26,7 @@ data.work = {
             url: { href: 'http://www.finnishdesignthinking.com/digitalbook/' },
             description: 'During my time at <a class="link" href="http://www.thinglink.com/" target="_blank">ThingLink</a> I developed a ' +
             'mobile-friendly digital brochure for the <a class="link" href="http://www.radicaldesignweek.com/" target="_blank">Radical Design Week</a> 2012 in Shanghai. ' +
-            'I worked on the project in collaboration with <a class="link" href="www.wtfhelsinki.fi" target="_blank">WTF Helsinki</a>, a creative digital agency from Helsinki, ' +
+            'I worked on the project in collaboration with <a class="link" href="http://www.wtfhelsinki.fi" target="_blank">WTF Helsinki</a>, a creative digital agency from Helsinki, ' +
             'carrying the responsibility for the technical implementation and project coordination.',
             keywords: [ 'jQuery Mobile', 'project coordination & collaboration', 'Radical Design Week' ]
         },
@@ -44,7 +44,7 @@ data.work = {
         },
         {
             name: 'aegee',
-            title: 'Putting together websites for international student events',
+            title: 'Building websites for international student events',
             url: { href: 'http://www.aegee-helsinki.org/su2011', title: 'AEGEE-Helsinki Summer University 2011 homepage' },
             description: 'During 2010-2014 I was an active member of <a class="link" href="http://www.aegee-helsinki.org/" target="_blank">AEGEE-Helsinki</a>' +
             ', an international student organization. I took part in organizing various European level events including ' +
@@ -61,7 +61,7 @@ data.work = {
                     url: 'http://www.aegee-helsinki.org/su2012/'
                 },
                 {
-                    name: 'AEGEE Travelling Summer University 2011: Discover Your True Colours',
+                    name: 'AEGEE Travelling Summer University 2011: Discover Your True Colors',
                     url: 'http://www.aegee-helsinki.org/su2011/'
                 },
                 {
@@ -100,15 +100,15 @@ data.work = {
     ],
     other: [
         {
-            title: 'Volunteering as a best buddy for mentally challenged',
-            description: 'In fall 2013 I began volunteering as a best buddy for a mentally challenged young man. I try seeing him once or twice a month ' +
-            'to hang out, cook food and watch a movie. The best thing about this experience, and in volunteer work in general, is knowning that you\'re making an effort to have a positive impact on someone\'s life.',
-            keywords: [ 'Make the world a better place' ]
+            title: 'Volunteering as a best buddy for the mentally challenged',
+            description: 'In fall 2013 I began volunteering as a best buddy for a mentally challenged young man. We get together once or twice a month ' +
+            'to hang out, cook food or to watch a movie. The best thing about this experience, and about volunteer work in general, is knowning that you\'re making an effort to have a positive impact on someone\'s life.',
+            keywords: [ 'Making the world a better place' ]
         },
         {
             title: 'Working as a research assistant at the university',
             description: 'I worked as a research assistant in the Visual Media Research Group at <a class="link" href="http://sci.aalto.fi/en/" target="_blank">Aalto SCI</a> ' +
-            'during 2010-2012. The research topics revolved around evaluating the effects of different stereoscopic stimuli and concave/convex displays. ' +
+            'during 2010-2012. The research topics revolved around evaluating the effects of different stereoscopic stimuli and measuring the readability of concave/convex displays. ' +
             'One the research projects focused on the <a class="link" href="http://publicationslist.org/data/jukka.hakkinen/ref-78/SPIE%20Hakkinen%202011.pdf" target="_blank">effect of image scaling on stereoscopic movie experience</a>.',
             keywords: [ 'Matlab', 'qualitative analysis', 'research experiment setup' ]
         },
