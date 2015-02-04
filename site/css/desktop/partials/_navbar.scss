@@ -61,6 +61,7 @@ $bg-color-home: rgb(87, 114, 135);
   background-size: 100% 35px;
   background-repeat: no-repeat;
   background-position: 0 0;
+  line-height: 0; // Fixes Firefox weirdness
 }
 
 .navbar-item-bg-state-about {
@@ -69,7 +70,7 @@ $bg-color-home: rgb(87, 114, 135);
 }
 
 .navbar-item-bg-state-work {
-  border-bottom-color: #0B1822;
+  border-bottom-color: #18223D;
   background-position: 0 35px, 0 0, 0 -35px;
 }
 
