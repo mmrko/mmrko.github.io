@@ -10,7 +10,6 @@ var siteLinksElem = document.getElementById('js-site-links');
 var faceContainerElem = document.getElementById('js-face');
 var facePrimaryElem = document.getElementById('js-face-primary');
 var faceSecondaryElem = document.getElementById('js-face-secondary');
-var introElem = document.getElementById('js-intro');
 var navBarElems = document.getElementsByClassName('navbar-item');
 
 var faceImages = new Image();
@@ -27,33 +26,6 @@ var faceAnimations = {
         return match ? match[0] : '';
     }
 };
-
-var intro = (function (element) {
-
-    var removed = false;
-
-    var removeFromDom = function () {
-        removed = true;
-        element.parentNode.removeChild(element);
-        element.removeEventListener(animation.end, removeFromDom);
-        sessionStorage.setItem('introPlayed', true);
-    };
-
-    if (sessionStorage.getItem('introPlayed')) {
-        element.parentNode.removeChild(element);
-        removed = true;
-    }
-
-    return {
-        remove: function () {
-            if (!removed) {
-                element.classList.add('animation-intro-end');
-                element.addEventListener(animation.end, removeFromDom, false);
-            }
-        }
-    };
-
-})(introElem);
 
 var bannerToggler = (function BannerToggler (initialState, downCb, upCb) {
 
@@ -242,7 +214,6 @@ function changeState (prevState, currentState) {
     animateNavbar(prevState, currentState);
 
     if (currentState !== 'home') {
-        intro.remove();
         bannerToggler.toggle('down');
     }
     else {
@@ -269,7 +240,6 @@ faceImages.onload = function (event) {
     var i, length;
 
     faceContainerElem.classList.add('face-container-animation');
-    introElem.classList.add('animation-intro-start');
 
     for (i = 0, length = navBarElems.length; i < length; i++) {
         navBarElems[i].classList.add('navbar-item-animation');
