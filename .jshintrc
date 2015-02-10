@@ -14,12 +14,5 @@
     "smarttabs": true,
     "devel": true,
     "browser": true,
-    "browserify": true,
-    "globals": {
-        "jQuery": true,
-        "ionic": true,
-        "angular": true,
-        "cordova": true,
-        "device": true
-    }
+    "browserify": true
 }
