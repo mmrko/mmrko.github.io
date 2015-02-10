@@ -1,4 +1,5 @@
 require('./lib/workViewHandler').init();
+var analyticsRecorder = require('./lib/analyticsRecorder');
 var animation = require('./lib/CSSAnimations');
 
 var bgPrimaryElem = document.getElementById('js-background-primary');
@@ -247,6 +248,8 @@ function changeState (prevState, currentState) {
     else {
         bannerToggler.toggle('up');
     }
+
+    analyticsRecorder.recordPageView(currentState);
 
 }
 

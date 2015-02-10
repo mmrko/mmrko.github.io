@@ -1,3 +1,4 @@
+var analyticsRecorder = require('./analyticsRecorder');
 var helpers = require('./helpers');
 
 function WorkViewHandler () {
@@ -31,9 +32,11 @@ function changeWorkView (event) {
     this.$activeView.classList.remove('active');
     this.$activeView = view.$view;
 
+    analyticsRecorder.recordPageView([ 'work', viewName ].join('/'));
+
 }
 
-function changeWorkSubView (name, event) {
+function changeWorkSubView (viewName, event) {
 
     var $clickedSubViewLink = event.target;
 
@@ -41,7 +44,7 @@ function changeWorkSubView (name, event) {
         return false;
     }
 
-    var view = this.views[name];
+    var view = this.views[viewName];
 
     if (view.$selectedSubViewLink) {
         view.$selectedSubViewLink.classList.remove('selected');
@@ -64,6 +67,8 @@ function changeWorkSubView (name, event) {
 
     view.$selectedSubViewLink.classList.add('selected');
     view.$activeSubView.classList.add('active');
+
+    analyticsRecorder.recordPageView([ 'work', viewName ].join('/'), $clickedSubViewLink.textContent);
 
 }
 
