@@ -17,7 +17,7 @@ data.work = {
             url: { href: 'duckhunt', title: 'HTML5 prototype of Duck Hunt' },
             description: 'As a course project at the university I developed an HTML5-based version of the legendary Nintendo game Duck Hunt. ' +
             'Much thought went into optimizing rendering performance as the goal was to make the game playable on touch-enabled devices. ' +
-            'Click on the image to give the game a go!',
+            'Documentation can be found in the <a class="link" href="https://github.com/mmrko/duckhunt" target="_blank">project\'s repository</a> on GitHub. Click on the image to give the game a go!',
             keywords: [ 'CSS animations', 'timeline/render profiling', 'CreateJS' ]
         },
         {
