@@ -8,7 +8,7 @@ data.work = {
             url: { href: 'http://www.kotivinkki.fi/', title: 'Homepage of Kotivinkki' },
             description: 'During 2013-2014 I worked alongside my studies as the technical lead for a site renewal project of several smaller brands of ' +
             '<a class="link" href="https://www.linkedin.com/company/a-lehdet-oy" target="_blank">A-lehdet</a>, Finland\'s 3rd largest magazine company. ' +
-            'One of the six sites I developed was <a class="link" href="http://www.kotivinkki.fi" target="_blank">Kotivinkki.fi</a>, which averages around 30 000 weekly visitors.',
+            'One of the six sites I developed was <a class="link" href="http://www.kotivinkki.fi" target="_blank">Kotivinkki.fi</a>, which currently averages around 30 000 weekly visitors.',
             keywords: [ 'Drupal', 'Sass', 'shell scripting', 'RWD' ]
         },
         {
@@ -77,12 +77,12 @@ data.work = {
     ],
     video: [
         {
-            title: 'AEGEE Travelling Summer University 2012: FinEst Design',
-            vimeoId: 53296163
-        },
-        {
             title: 'AEGEE Travelling Summer University 2012: FinEst Design teaser',
             vimeoId: 36000484
+        },
+        {
+            title: 'AEGEE Travelling Summer University 2012: FinEst Design',
+            vimeoId: 53296163
         },
         {
             name: 'norcom',
@@ -120,7 +120,7 @@ data.work = {
         },
         {
             title: 'Site administration and content curation in a student organization',
-            description: 'In 2010-2014 I was responsible for administering & curating content for ' +
+            description: 'During 2010-2014 I was responsible for administering & curating content for ' +
             '<a class="link" href="http://www.aegee-helsinki.org/" target="_blank">AEGEE-Helsinki</a>\'s website.',
             keywords: [ 'PHP', 'CMS', 'Textpattern' ]
         }
