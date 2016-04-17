@@ -10,6 +10,8 @@
     "broccoli-sass": "^0.7.0",
     "broccoli-taco": "0.0.8",
     "broccoli-uglify-js": "^0.1.3",
+    "broccoli-autoprefixer": "^4.1.0",
+    "broccoli-strip-debug": "^1.0.0",
     "gulp": "^3.8.10",
     "gulp-jshint": "^1.9.2",
     "gulp-load-plugins": "^0.8.0",
@@ -35,9 +37,5 @@
   "bugs": {
     "url": "https://github.com/mmrko/mmrko.github.io/issues"
   },
-  "homepage": "https://github.com/mmrko/mmrko.github.io",
-  "dependencies": {
-    "broccoli-autoprefixer": "^4.1.0",
-    "broccoli-strip-debug": "^1.0.0"
-  }
+  "homepage": "https://github.com/mmrko/mmrko.github.io"
 }
