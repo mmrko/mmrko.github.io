@@ -22,8 +22,8 @@ data.work = {
         },
         {
             name: 'wtf-helsinki',
-            title: 'Creating a mobile-friendly digital brochure experience',
-            url: { href: 'http://www.finnishdesignthinking.com/digitalbook/' },
+            title: 'Creating a mobile-friendly digital brochure experience (offline)',
+            url: { href: '#' },
             description: 'During my time at <a class="link" href="http://www.thinglink.com/" target="_blank">ThingLink</a> I developed a ' +
             'mobile-friendly digital brochure for the <a class="link" href="http://www.radicaldesignweek.com/" target="_blank">Radical Design Week</a> 2012 in Shanghai. ' +
             'I worked on the project in collaboration with <a class="link" href="http://www.wtfhelsinki.fi" target="_blank">WTF Helsinki</a>, a creative digital agency from Helsinki, ' +

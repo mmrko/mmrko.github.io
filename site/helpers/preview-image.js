@@ -5,6 +5,10 @@ module.exports = function (url, classes) {
         return '<a class="' + classes + '"' + ' href="' + url + '"' + title + ' target="_blank"></a>';
     }
 
+    if (!url || url.href === '#') {
+        return '<span class="' + classes + '"></span>';
+    }
+
     if (typeof url.href === 'string') {
         return formatUrl(url.href, url.title);
     }
