@@ -3,12 +3,19 @@ var data = {};
 data.work = {
     web: [
         {
+            name: 'luminotrace',
+            title: 'LuminoTrace: photoluminescene-based product authentication for smartphones',
+            url: { href: 'https://github.com/mmrko/luminotrace', title: 'LuminoTrace' },
+            description: 'My Master\'s Thesis project that investigated the feasibility of a covert, cost-effective solution to product authentication. I got to explore different facets of web and software development from hybrid app development to tinkering with an Arduino and setting up the underlying cloud architecture to run on Docker.',
+            keywords: [ 'Apache Cordova', 'Java', 'C#', 'AngularJS', 'Docker', 'Node.js', 'CouchDB', 'C++' ]
+        },
+        {
             name: 'kotivinkki',
             title: 'Technical lead in a site renewal project',
             url: { href: 'http://www.kotivinkki.fi/', title: 'Homepage of Kotivinkki' },
             description: 'During 2013-2014 I worked alongside my studies as the technical lead for a site renewal project of several smaller brands of ' +
-            '<a class="link" href="https://www.linkedin.com/company/a-lehdet-oy" target="_blank">A-lehdet</a>, Finland\'s 3rd largest magazine company. ' +
-            'One of the six sites I developed was <a class="link" href="http://www.kotivinkki.fi" target="_blank">Kotivinkki.fi</a>, which currently averages around 30 000 weekly visitors.',
+            '<a class="link" href="https://www.linkedin.com/company/a-lehdet-oy" target="_blank">A-lehdet</a>, Finland\'s 3rd largest media outlet. ' +
+            'One of the six sites I developed was <a class="link" href="http://www.kotivinkki.fi" target="_blank">Kotivinkki.fi</a>, which currently averages around 50 000 weekly visitors.',
             keywords: [ 'Drupal', 'Sass', 'shell scripting', 'RWD' ]
         },
         {
@@ -22,7 +29,7 @@ data.work = {
         },
         {
             name: 'wtf-helsinki',
-            title: 'Creating a mobile-friendly digital brochure experience (offline)',
+            title: 'Creating a mobile-friendly digital brochure experience (taken offline)',
             url: { href: '#' },
             description: 'During my time at <a class="link" href="http://www.thinglink.com/" target="_blank">ThingLink</a> I developed a ' +
             'mobile-friendly digital brochure for the <a class="link" href="http://www.radicaldesignweek.com/" target="_blank">Radical Design Week</a> 2012 in Shanghai. ' +
