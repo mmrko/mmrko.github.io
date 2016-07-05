@@ -6,7 +6,7 @@ data.work = {
             name: 'luminotrace',
             title: 'LuminoTrace: photoluminescene-based product authentication for smartphones',
             url: { href: 'https://github.com/mmrko/luminotrace', title: 'LuminoTrace' },
-            description: 'My Master\'s Thesis project that investigated the feasibility of a covert, cost-effective solution to product authentication. I got to explore different facets of web and software development from hybrid app development to tinkering with an Arduino and setting up the underlying cloud architecture to run on Docker.',
+            description: 'My Master\'s Thesis project that investigated the feasibility of a covert, cost-effective solution to product authentication. I got to explore different facets of web and software development from hybrid app development to tinkering with an Arduino and setting up the underlying cloud architecture to run on Docker. Learned myself some chemistry on the side as well!',
             keywords: [ 'Apache Cordova', 'Java', 'C#', 'AngularJS', 'Docker', 'Node.js', 'CouchDB', 'C++' ]
         },
         {
